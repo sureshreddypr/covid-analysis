@@ -11,7 +11,7 @@
     <style>
       body {
         margin: 0;
-        font: 12px Trebuchet MS;
+        font: 11px Trebuchet MS;
         background-color: #grey;
         background-repeat: no-repeat;
         background-attachment: fixed;
@@ -74,7 +74,7 @@
 
       /* Style the footer */
       .footer {
-        background-color: #F0F3F5;
+        background-color: ##72DCFF;
         padding: 10px;
         text-align: center;
       }
@@ -198,7 +198,7 @@
     </div>
 
     <script type="text/javascript">
-      ////////////////////////////////////// Start scatter plot code ////////////////////////////////////
+      ////////////////////////////////////// Beginning of scatter plot code ////////////////////////////////////
 
       // set the dimensions and margins of the graph
       var margin_scatter = { top: 10, right: 30, bottom: 30, left: 60 },
@@ -207,7 +207,7 @@
 
       // append the svg object to the body of the page
       var svg_scatter = d3
-        .select('#narrative viz')
+        .select('#my_dataviz')
         .append('svg')
         .attr(
           'width',
@@ -246,13 +246,13 @@
           .range([8, 25]);
 
         // Add X axis
-        var x = d3.scaleLog().domain([1000, 1000000]).range([0, width_scatter]);
+        var x = d3.scaleLinear().domain([0, 0]).range([0, width_scatter]);
 
         svg_scatter
           .append('g')
           .attr('class', 'myXaxis') // Note that here we give a class to the X axis, to be able to call it later and modify it
           .attr('transform', 'translate(0,' + height_scatter + ')')
-          .call(d3.axisBottom(x).ticks(4).tickFormat(d3.format(".0s")))
+          .call(d3.axisBottom(x))
           .attr('opacity', '0');
 
         // text label for the x axis
@@ -267,15 +267,14 @@
               ')'
           )
           .style('text-anchor', 'middle')
-        	.style("font", "20px times")
-          .text('Total Cases');
+          .text('Total Deaths');
 
         // Add Y axis
         var y = d3
-          .scaleLog()
+          .scaleLinear()
           .domain([0, 160000])
           .range([height_scatter, 0]);
-        svg_scatter.append('g').call(d3.axisLeft(y).ticks(4).tickFormat(d3.format(".0s")));
+        svg_scatter.append('g').call(d3.axisLeft(y));
 
         svg_scatter
           .append('text')
@@ -284,7 +283,6 @@
           .attr('x', 0 - height_scatter / 2)
           .attr('dy', '1em')
           .style('text-anchor', 'middle')
-          .style("font", "20px times")
           .text(' Total Deaths ');
 
         // Tooltip setting for mouseover event
@@ -337,7 +335,7 @@
           .attr('orient', 'auto')
           .append('path')
           .attr('d', 'M 0 0 12 6 0 12 3 6')
-          .style('fill', 'grey');
+          .style('fill', 'red');
 
         //line for annotation
         svg_scatter
@@ -347,7 +345,7 @@
           .attr('x2', 1000)
           .attr('y2', 70)
           .attr('stroke-width', 2)
-          .attr('stroke', 'grey')
+          .attr('stroke', 'red')
           .attr('marker-end', 'url(#triangle)');
 
         // text for annotation
@@ -355,7 +353,7 @@
           .append('text')
           .attr('x', 750)
           .attr('y', 185)
-          .attr('font-family', 'Trebuchet MS')
+          .attr('font-family', 'sans-serif')
           .attr('font-size', 15)
           .style('fill', 'red')
           .style('text-decoration', 'underline')
@@ -415,7 +413,7 @@
           .append('text')
           .transition()
           .delay(function (d, i) {
-            return i * 4;
+            return i * 3;
           })
           .duration(4000)
           .text(function (d) {
