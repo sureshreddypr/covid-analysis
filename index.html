@@ -246,7 +246,7 @@
           .range([2, 40]);
 
         // Add X axis
-        var x = d3.scaleLinear().domain([0, 0]).range([0, width_scatter]);
+        var x = d3.scaleLinear().domain([0, 0]).range([0, width_scatter]).ticks(5).tickFormat(d3.format("s"));
 
         svg_scatter
           .append('g')
