@@ -252,7 +252,7 @@ z<!DOCTYPE html>
           .append('g')
           .attr('class', 'myXaxis') // Note that here we give a class to the X axis, to be able to call it later and modify it
           .attr('transform', 'translate(0,' + height_scatter + ')')
-          .call(d3.axisBottom(x))
+          .call(d3.axisBottom(x).ticks(4).tickFormat(d3.format(".0s"))
           .attr('opacity', '0');
 
         // text label for the x axis
@@ -275,7 +275,7 @@ z<!DOCTYPE html>
           .scaleLog()
           .domain([0, 160000])
           .range([height_scatter, 0]);
-        svg_scatter.append('g').call(d3.axisLeft(y));
+        svg_scatter.append('g').call(d3.axisLeft(y).ticks(4).tickFormat(d3.format(".0s"));
 
         svg_scatter
           .append('text')
