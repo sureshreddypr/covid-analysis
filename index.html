@@ -250,7 +250,7 @@
 
         // Add X axis
 
-        var x = d3.scaleLog().domain([1000, 10000000]).range([ 0, width ]);
+        var x = d3.scaleLinear.domain([1000, 10000000]).range([ 0, width_scatter ]);
         var x_axis = d3.axisBottom(x).ticks(4).tickFormat(d3.format(".0s"));
         //var x = d3.scaleLinear().domain([0, 0]).range([0, width_scatter]);
 
