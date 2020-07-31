@@ -489,7 +489,7 @@
 
           // Add Y axis
           y_b.domain([0, d3.max(data, function (d) {
-              return +d.Deaths
+              return +d.total_tests
           })]);
           yAxis_b.transition().duration(1000).call(d3.axisLeft(y_b));
 
@@ -499,7 +499,7 @@
               .attr("x", 0 - (height1 / 2))
               .attr("dy", "1em")
               .style("text-anchor", "middle")
-              .text("Total Deaths");
+              .text("Total Tests");
 
           // variable u: map data to existing bars
           var u2 = svg2.selectAll("rect")
