@@ -252,7 +252,7 @@
           .append('g')
           .attr('class', 'myXaxis') // Note that here we give a class to the X axis, to be able to call it later and modify it
           .attr('transform', 'translate(0,' + height_scatter + ')')
-          .call(d3.axisBottom(x).ticks(5).tickFormat(d3.format("s")))
+          .call(d3.axisBottom(x))
           .attr('opacity', '0');
 
         // text label for the x axis
