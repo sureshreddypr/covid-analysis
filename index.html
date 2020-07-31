@@ -525,7 +525,7 @@
               // add color range per total no. of deaths
               .attr("class", function (d) {
                   var s = "bar ";
-                  if (d.total_tests < 5000000) {
+                  if (d.total_tests < 500000) {
                       return s + "bar1";
                   } else if (d.total_tests < 100000) {
                       return s + "bar2";
@@ -539,7 +539,7 @@
           svg2.append("circle").attr("cx",700).attr("cy",60).attr("r", 6).style("fill", "#008B8B")
           svg2.append("circle").attr("cx",700).attr("cy",90).attr("r", 6).style("fill", "#FB7E81")
           svg2.append("circle").attr("cx",700).attr("cy",120).attr("r", 6).style("fill", "#9E0508")
-          svg2.append("text").attr("x", 720).attr("y", 60).text("Total Tests > 5000000").style("font-size", "15px").attr("alignment-baseline","middle")
+          svg2.append("text").attr("x", 720).attr("y", 60).text("Total Tests > 500000").style("font-size", "15px").attr("alignment-baseline","middle")
           svg2.append("text").attr("x", 720).attr("y", 90).text("Total Tests < 100000").style("font-size", "15px").attr("alignment-baseline","middle")
           svg2.append("text").attr("x", 720).attr("y", 120).text("Total Tests < 5000").style("font-size", "15px").attr("alignment-baseline","middle")
       })
