@@ -74,7 +74,7 @@
 
       /* Style the footer */
       .footer {
-        background-color: #F1F2F4;
+        background-color: lightblue;
         padding: 10px;
         text-align: center;
       }
@@ -86,7 +86,7 @@
       }
 
       .bar1 {
-        fill: #50A6C2;
+        fill: #009ACD;
       }
       .bar2 {
         fill: #0a81a8;
@@ -263,10 +263,11 @@
             'translate(' +
               width_scatter / 2 +
               ' ,' +
-              (height_scatter + margin_scatter.top + 13) +
+              (height_scatter + margin_scatter.top + 15) +
               ')'
           )
           .style('text-anchor', 'middle')
+          .style('font', '20px times')
           .text('Total Cases');
 
         // Add Y axis
@@ -283,6 +284,7 @@
           .attr('x', 0 - height_scatter / 2)
           .attr('dy', '1em')
           .style('text-anchor', 'middle')
+          .style('font', '20px times')
           .text(' Total Deaths ');
 
         // Tooltip setting for mouseover event
