@@ -202,8 +202,8 @@
 
       // set the dimensions and margins of the graph
       var margin_scatter = { top: 10, right: 30, bottom: 30, left: 60 },
-        width_scatter = 1200 - margin_scatter.left - margin_scatter.right,
-        height_scatter = 400 - margin_scatter.top - margin_scatter.bottom;
+        width_scatter = 1100 - margin_scatter.left - margin_scatter.right,
+        height_scatter = 420 - margin_scatter.top - margin_scatter.bottom;
 
       // append the svg object to the body of the page
       var svg_scatter = d3
@@ -243,7 +243,7 @@
         var sizeScale = d3
           .scaleLinear()
           .domain([minVal, maxVal])
-          .range([5, 25]);
+          .range([2, 30]);
 
         // Add X axis
         var x = d3.scaleLinear().domain([0, 0]).range([0, width_scatter]);
@@ -263,7 +263,7 @@
             'translate(' +
               width_scatter / 2 +
               ' ,' +
-              (height_scatter + margin_scatter.top - 6) +
+              (height_scatter + margin_scatter.top +25) +
               ')'
           )
           .style('text-anchor', 'middle')
@@ -280,8 +280,8 @@
         svg_scatter
           .append('text')
           .attr('transform', 'rotate(-90)')
-          .attr('y', 6 - margin_scatter.left)
-          .attr('x', 6 - height_scatter / 2)
+          .attr('y', 0-margin_scatter.left)
+          .attr('x', 0-height_scatter/2)
           .attr('dy', '1em')
           .style('text-anchor', 'middle')
           .style('font', '20px times')
@@ -337,7 +337,7 @@
           .attr('orient', 'auto')
           .append('path')
           .attr('d', 'M 0 0 12 6 0 12 3 6')
-          .style('fill', 'red');
+          .style('fill', 'lightblue');
 
         //line for annotation
         svg_scatter
@@ -347,7 +347,7 @@
           .attr('x2', 1000)
           .attr('y2', 70)
           .attr('stroke-width', 2)
-          .attr('stroke', 'red')
+          .attr('stroke', 'blue')
           .attr('marker-end', 'url(#triangle)');
 
         // text for annotation
@@ -357,7 +357,7 @@
           .attr('y', 185)
           .attr('font-family', 'sans-serif')
           .attr('font-size', 15)
-          .style('fill', 'red')
+          .style('fill', 'blue')
           .style('text-decoration', 'underline')
           .text('USA reported highest cases and deaths');
 
@@ -398,7 +398,7 @@
           .delay(function (d, i) {
             return i * 4;
           })
-          .duration(8000)
+          .duration(9000)
           .attr('cx', function (d) {
             return x(d.total_cases);
           })
