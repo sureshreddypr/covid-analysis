@@ -224,7 +224,7 @@
         );
 
       //Loading the US Total no. of Cases and Deaths data
-      d3.csv('data/covid_data_07252020.csv', function (data) {
+      d3.csv('data/covid_global_data_07252020.csv', function (data) {
         var dataArray = [];
         for (var d = 0; d < data.length; d++) {
           dataArray.push(parseFloat(data[d].total_cases));
