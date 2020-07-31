@@ -224,7 +224,7 @@
         );
 
       //Loading the US Total no. of Cases and Deaths data
-      d3.csv('data/covid_global_data_07252020.csv', function (data) {
+      d3.csv('data/covid_data_07252020.csv', function (data) {
         var dataArray = [];
         for (var d = 0; d < data.length; d++) {
           dataArray.push(parseFloat(data[d].total_cases));
@@ -237,13 +237,13 @@
         var color = d3
           .scaleLinear()
           .domain([minVal, midVal, maxVal])
-          .range(['#008B8B', '#FB7E81', '#9E0508']);
+          .range(['#72DCFF', '#FB7E81', '#9E0508']);
 
         // Linear scale of the circle size
         var sizeScale = d3
           .scaleLinear()
           .domain([minVal, maxVal])
-          .range([5, 25]);
+          .range([8, 25]);
 
         // Add X axis
         var x = d3.scaleLinear().domain([0, 0]).range([0, width_scatter]);
@@ -263,7 +263,7 @@
             'translate(' +
               width_scatter / 2 +
               ' ,' +
-              (height_scatter + margin_scatter.top - 6) +
+              (height_scatter + margin_scatter.top + 15) +
               ')'
           )
           .style('text-anchor', 'middle')
@@ -280,8 +280,8 @@
         svg_scatter
           .append('text')
           .attr('transform', 'rotate(-90)')
-          .attr('y', 6 - margin_scatter.left)
-          .attr('x', 6 - height_scatter / 2)
+          .attr('y', 0 - margin_scatter.left)
+          .attr('x', 0 - height_scatter / 2)
           .attr('dy', '1em')
           .style('text-anchor', 'middle')
           .style('font', '20px times')
