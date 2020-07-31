@@ -75,7 +75,7 @@
 
       /* Style the footer */
       .footer {
-        background-color: #f1f1f1;
+        background-color: ##72DCFF;
         padding: 10px;
         text-align: center;
       }
@@ -238,13 +238,13 @@
         var color = d3
           .scaleLinear()
           .domain([minVal, midVal, maxVal])
-          .range(['#98B5FF', '#FB7E81', '#9E0508']);
+          .range(['#72DCFF', '#FB7E81', '#9E0508']);
 
         // Linear scale of the circle size
         var sizeScale = d3
           .scaleLinear()
           .domain([minVal, maxVal])
-          .range([5, 20]);
+          .range([8, 25]);
 
         // Add X axis
         var x = d3.scaleLinear().domain([0, 0]).range([0, width_scatter]);
@@ -273,7 +273,7 @@
         // Add Y axis
         var y = d3
           .scaleLinear()
-          .domain([0, 5000000])
+          .domain([0, 160000])
           .range([height_scatter, 0]);
         svg_scatter.append('g').call(d3.axisLeft(y));
 
@@ -284,7 +284,10 @@
           .attr('x', 0 - height_scatter / 2)
           .attr('dy', '1em')
           .style('text-anchor', 'middle')
-          .text('Total Cases');
+          .text('
+                
+                
+                ');
 
         // Tooltip setting for mouseover event
         var tooltip = d3
@@ -383,11 +386,11 @@
           .on('mouseout', tipMouseout);
 
         // X axis based on transition domain fixed based on deaths count
-        x.domain([0, 160000]);
+        x.domain([10000, 5000000]);
         svg_scatter
           .select('.myXaxis')
           .transition()
-          .duration(2000)
+          .duration(3000)
           .attr('opacity', '1')
           .call(d3.axisBottom(x));
 
@@ -397,7 +400,7 @@
           .delay(function (d, i) {
             return i * 3;
           })
-          .duration(2000)
+          .duration(3000)
           .attr('cx', function (d) {
             return x(d.total_deaths);
           })
@@ -421,10 +424,10 @@
             return d.abbr;
           })
           .attr('x', function (d) {
-            return x(d.Deaths);
+            return x(d.total_cases);
           })
           .attr('y', function (d) {
-            return y(d.Total_Cases);
+            return y(d.total_deaths);
           })
           .attr('font_family', 'Trebuchet MS') // Font type
           .attr('font-size', '8px')
