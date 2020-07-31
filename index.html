@@ -202,8 +202,8 @@
 
       // set the dimensions and margins of the graph
       var margin_scatter = { top: 10, right: 30, bottom: 30, left: 60 },
-        width_scatter = 1200 - margin_scatter.left - margin_scatter.right,
-        height_scatter = 400 - margin_scatter.top - margin_scatter.bottom;
+        width_scatter = 1000 - margin_scatter.left - margin_scatter.right,
+        height_scatter = 500 - margin_scatter.top - margin_scatter.bottom;
 
       // append the svg object to the body of the page
       var svg_scatter = d3
@@ -439,8 +439,8 @@
 
       // Set width, height and margin for this chart
       var margin1 = {top: 50, right: 30, bottom: 80, left: 60},
-          width1 = 1200 - margin1.left - margin1.right,
-          height1 = 800 - margin1.top - margin1.bottom;
+          width1 = 100 - margin1.left - margin1.right,
+          height1 = 500 - margin1.top - margin1.bottom;
 
       // append the svg object to the body of the page
       var svg2 = d3.select("#narrative_viz")
@@ -539,8 +539,8 @@
           svg2.append("circle").attr("cx",900).attr("cy",60).attr("r", 6).style("fill", "#008B8B")
           svg2.append("circle").attr("cx",900).attr("cy",90).attr("r", 6).style("fill", "#FB7E81")
           svg2.append("circle").attr("cx",900).attr("cy",120).attr("r", 6).style("fill", "#9E0508")
-          svg2.append("text").attr("x", 920).attr("y", 60).text("Total Tests > 10000").style("font-size", "15px").attr("alignment-baseline","middle")
-          svg2.append("text").attr("x", 920).attr("y", 90).text("Total Tests < 10000").style("font-size", "15px").attr("alignment-baseline","middle")
+          svg2.append("text").attr("x", 920).attr("y", 60).text("Total Tests > 5000000").style("font-size", "15px").attr("alignment-baseline","middle")
+          svg2.append("text").attr("x", 920).attr("y", 90).text("Total Tests < 100000").style("font-size", "15px").attr("alignment-baseline","middle")
           svg2.append("text").attr("x", 920).attr("y", 120).text("Total Tests < 5000").style("font-size", "15px").attr("alignment-baseline","middle")
       })
 
