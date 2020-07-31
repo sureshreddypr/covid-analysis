@@ -473,7 +473,7 @@
           //var colorScale = d3.category20c();
           // X axis
           x_b.domain(data.map(function (d) {
-              return d.total_tests;
+              return d.location;
           }))
           xAxis_b.transition().duration(1000).call(d3.axisBottom(x_b)).selectAll("text")
               .attr("transform", "translate(-10,0)rotate(-45)")
