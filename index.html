@@ -246,7 +246,18 @@
           .range([2, 40]);
 
         // Add X axis
-        var x = d3.scaleLinear().domain([0, 0]).range([0, width_scatter]);
+        
+        var myTickFormat = function (d) {//Logic to reduce big numbers
+  var limits = [1000000000000000, 1000000000000, 1000000000, 1000000, 1000];
+  var shorteners = ['Q','T','B','M','K'];
+  for(var i in limits) {
+    if(d > limits[i]) {
+      return (d/limits[i]).toFixed() + shorteners[i];
+    }
+  }
+  return d;
+};
+        var x = d3.scaleLinear().domain([0, 0]).range([0, width_scatter]).ticks(4).tickFormat(myTickFormat);;
 
         svg_scatter
           .append('g')
