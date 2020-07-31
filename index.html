@@ -237,7 +237,7 @@
         var color = d3
           .scaleLinear()
           .domain([minVal, midVal, maxVal])
-          .range(['#009ACD', '#FB7E81', '#9E0508']);
+          .range(['#008B8B', '#FB7E81', '#9E0508']);
 
         // Linear scale of the circle size
         var sizeScale = d3
@@ -263,7 +263,7 @@
             'translate(' +
               width_scatter / 2 +
               ' ,' +
-              (height_scatter + margin_scatter.top + 15) +
+              (height_scatter + margin_scatter.top - 6) +
               ')'
           )
           .style('text-anchor', 'middle')
@@ -280,8 +280,8 @@
         svg_scatter
           .append('text')
           .attr('transform', 'rotate(-90)')
-          .attr('y', 0 - margin_scatter.left)
-          .attr('x', 0 - height_scatter / 2)
+          .attr('y', 6 - margin_scatter.left)
+          .attr('x', 6 - height_scatter / 2)
           .attr('dy', '1em')
           .style('text-anchor', 'middle')
           .style('font', '20px times')
