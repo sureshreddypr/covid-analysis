@@ -402,10 +402,10 @@
           })
           .duration(3000)
           .attr('cx', function (d) {
-            return x(d.total_deaths);
+            return x(d.total_cases);
           })
           .attr('cy', function (d) {
-            return y(d.total_cases);
+            return y(d.total_deaths);
           });
 
         // add state name abbreviation to the circles as label
