@@ -386,7 +386,7 @@
         svg_scatter
           .select('.myXaxis')
           .transition()
-          .duration(3000)
+          .duration(8000)
           .attr('opacity', '1')
           .call(d3.axisBottom(x));
 
@@ -396,7 +396,7 @@
           .delay(function (d, i) {
             return i * 4;
           })
-          .duration(3000)
+          .duration(8000)
           .attr('cx', function (d) {
             return x(d.total_cases);
           })
@@ -415,7 +415,7 @@
           .delay(function (d, i) {
             return i * 4;
           })
-          .duration(4000)
+          .duration(8000)
           .text(function (d) {
             return d.abbr;
           })
