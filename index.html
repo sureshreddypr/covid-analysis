@@ -513,10 +513,10 @@
               .transition()
               .duration(1000)
               .attr("x", function (d) {
-                  return x_b(d['location']);
+                  return x_b(d.location);
               })
               .attr("y", function (d) {
-                  return y_b(d['total_tests']);
+                  return y_b(d.total_tests);
               })
               .attr("width", x_b.bandwidth())
               .attr("height", function (d) {
