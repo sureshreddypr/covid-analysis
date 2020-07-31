@@ -11,7 +11,7 @@
     <style>
       body {
         margin: 0;
-        font: 11px Trebuchet MS;
+        font: 12px Trebuchet MS;
         background-color: #grey;
         background-repeat: no-repeat;
         background-attachment: fixed;
@@ -74,7 +74,7 @@
 
       /* Style the footer */
       .footer {
-        background-color: ##72DCFF;
+        background-color: #F0F3F5;
         padding: 10px;
         text-align: center;
       }
@@ -267,6 +267,7 @@
               ')'
           )
           .style('text-anchor', 'middle')
+        	.style("font", "20px times")
           .text('Total Cases');
 
         // Add Y axis
@@ -283,6 +284,7 @@
           .attr('x', 0 - height_scatter / 2)
           .attr('dy', '1em')
           .style('text-anchor', 'middle')
+          .style("font", "20px times")
           .text(' Total Deaths ');
 
         // Tooltip setting for mouseover event
@@ -335,7 +337,7 @@
           .attr('orient', 'auto')
           .append('path')
           .attr('d', 'M 0 0 12 6 0 12 3 6')
-          .style('fill', 'red');
+          .style('fill', 'grey');
 
         //line for annotation
         svg_scatter
@@ -345,7 +347,7 @@
           .attr('x2', 1000)
           .attr('y2', 70)
           .attr('stroke-width', 2)
-          .attr('stroke', 'red')
+          .attr('stroke', 'grey')
           .attr('marker-end', 'url(#triangle)');
 
         // text for annotation
@@ -353,7 +355,7 @@
           .append('text')
           .attr('x', 750)
           .attr('y', 185)
-          .attr('font-family', 'sans-serif')
+          .attr('font-family', 'Trebuchet MS')
           .attr('font-size', 15)
           .style('fill', 'red')
           .style('text-decoration', 'underline')
@@ -413,7 +415,7 @@
           .append('text')
           .transition()
           .delay(function (d, i) {
-            return i * 3;
+            return i * 4;
           })
           .duration(4000)
           .text(function (d) {
