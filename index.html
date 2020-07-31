@@ -132,9 +132,11 @@
       >
         <b style="color: purple; font-size: 18px;"
           >COVID-19 Total Cases vs Deaths By State:</b
-        ><br />The following scatter plot represents the COVID-19 total
-        cases vs total deaths reported globally as of 07/25/2020. Hover over the circles to see the additional details.
-        Annotation describes that the Top countries that are highly impacted reporting highest number of total cases and deaths in the world so far.<br />
+        ><br />The following scatter plot represents the COVID-19 total cases vs
+        total deaths reported globally as of 07/25/2020. Hover over the circles
+        to see the additional details. Annotation describes that the Top
+        countries that are highly impacted reporting highest number of total
+        cases and deaths in the world so far.<br />
       </p>
       <div
         id="narrative_viz"
@@ -198,353 +200,240 @@
     </div>
 
     <script type="text/javascript">
-      ////////////////////////////////////// Beginning of scatter plot code ////////////////////////////////////
+        ////////////////////////////////////// Beginning of scatter plot code ////////////////////////////////////
 
-      // set the dimensions and margins of the graph
-      var margin_scatter = { top: 10, right: 30, bottom: 30, left: 60 },
-        width_scatter = 1100 - margin_scatter.left - margin_scatter.right,
-        height_scatter = 420 - margin_scatter.top - margin_scatter.bottom;
+        // set the dimensions and margins of the graph
+        var margin_scatter = { top: 10, right: 30, bottom: 30, left: 60 },
+          width_scatter = 1100 - margin_scatter.left - margin_scatter.right,
+          height_scatter = 420 - margin_scatter.top - margin_scatter.bottom;
 
-      // append the svg object to the body of the page
-      var svg_scatter = d3
-        .select('#narrative_viz')
-        .append('svg')
-        .attr(
-          'width',
-          width_scatter + margin_scatter.left + margin_scatter.right
-        )
-        .attr(
-          'height',
-          height_scatter + margin_scatter.top + margin_scatter.bottom
-        )
-        .append('g')
-        .attr(
-          'transform',
-          'translate(' + margin_scatter.left + ',' + margin_scatter.top + ')'
-        );
-
-      //Loading the US Total no. of Cases and Deaths data
-      d3.csv('data/covid_global_data_07252020.csv', function (data) {
-        var dataArray = [];
-        for (var d = 0; d < data.length; d++) {
-          dataArray.push(parseFloat(data[d].total_cases));
-        }
-        // Setting color range based on the data array value
-        var minVal = d3.min(dataArray);
-        var midVal = (d3.max(dataArray) - d3.min(dataArray)) / 2;
-        var maxVal = d3.max(dataArray);
-
-        var color = d3
-          .scaleLinear()
-          .domain([minVal, midVal, maxVal])
-          .range(['#008B8B', '#FB7E81', '#9E0508']);
-
-        // Linear scale of the circle size
-        var sizeScale = d3
-          .scaleLinear()
-          .domain([minVal, maxVal])
-          .range([2, 30]);
-
-        // Add X axis
-        var x = d3.scaleLinear().domain([0, 0]).range([0, width_scatter]);
-
-        svg_scatter
+        // append the svg object to the body of the page
+        var svg_scatter = d3
+          .select('#narrative_viz')
+          .append('svg')
+          .attr(
+            'width',
+            width_scatter + margin_scatter.left + margin_scatter.right
+          )
+          .attr(
+            'height',
+            height_scatter + margin_scatter.top + margin_scatter.bottom
+          )
           .append('g')
-          .attr('class', 'myXaxis') // Note that here we give a class to the X axis, to be able to call it later and modify it
-          .attr('transform', 'translate(0,' + height_scatter + ')')
-          .call(d3.axisBottom(x))
-          .attr('opacity', '0');
-
-        // text label for the x axis
-        svg_scatter
-          .append('text')
           .attr(
             'transform',
-            'translate(' +
-              width_scatter / 2 +
-              ' ,' +
-              (height_scatter + margin_scatter.top +13) +
-              ')'
-          )
-          .style('text-anchor', 'middle')
-          .style('font', '20px times')
-          .text('Total Cases');
+            'translate(' + margin_scatter.left + ',' + margin_scatter.top + ')'
+          );
 
-        // Add Y axis
-        var y = d3
-          .scaleLinear()
-          .domain([0, 160000])
-          .range([height_scatter, 0]);
-        svg_scatter.append('g').call(d3.axisLeft(y));
+        //Loading the US Total no. of Cases and Deaths data
+        d3.csv('data/covid_global_data_07252020.csv', function (data) {
+          var dataArray = [];
+          for (var d = 0; d < data.length; d++) {
+            dataArray.push(parseFloat(data[d].total_cases));
+          }
+          // Setting color range based on the data array value
+          var minVal = d3.min(dataArray);
+          var midVal = (d3.max(dataArray) - d3.min(dataArray)) / 2;
+          var maxVal = d3.max(dataArray);
 
-        svg_scatter
-          .append('text')
-          .attr('transform', 'rotate(-90)')
-          .attr('y', 0-margin_scatter.left)
-          .attr('x', 0-height_scatter/2)
-          .attr('dy', '1em')
-          .style('text-anchor', 'middle')
-          .style('font', '20px times')
-          .text(' Total Deaths ');
+          var color = d3
+            .scaleLinear()
+            .domain([minVal, midVal, maxVal])
+            .range(['#008B8B', '#FB7E81', '#9E0508']);
 
-        // Tooltip setting for mouseover event
-        var tooltip = d3
-          .select('#narrative_viz')
-          .append('div')
-          .attr('class', 'tooltip')
-          .style('opacity', 0);
+          // Linear scale of the circle size
+          var sizeScale = d3
+            .scaleLinear()
+            .domain([minVal, maxVal])
+            .range([2, 30]);
 
-        // tooltip mouseover event handler
-        var tipMouseover = function (d) {
-          //var color = color(d.jurisdiction);
-          var html =
-            '<span>' +
-            d.location +
-            '</span><br/>' +
-            "<b style='color: red'>" +
-            d.total_deaths +
-            "</b> Deaths, <b style='color: darkred'>" +
-            d.total_cases +
-            '</b> Total Cases';
+          // Add X axis
+          var x = d3.scaleLinear().domain([0, 0]).range([0, width_scatter]);
 
-          tooltip
-            .html(html)
-            .style('left', d3.event.pageX + 15 + 'px')
-            .style('top', d3.event.pageY - 28 + 'px')
-            .transition()
-            .duration(200) // ms
-            .style('opacity', 0.9); // started as 0!
-        };
+          svg_scatter
+            .append('g')
+            .attr('class', 'myXaxis') // Note that here we give a class to the X axis, to be able to call it later and modify it
+            .attr('transform', 'translate(0,' + height_scatter + ')')
+            .call(d3.axisBottom(x))
+            .attr('opacity', '0');
 
-        // tooltip mouseout event handler
-        var tipMouseout = function (d) {
-          tooltip
-            .transition()
-            .duration(300) // ms
-            .style('opacity', 0); // don't care about position!
-        };
+          // text label for the x axis
+          svg_scatter
+            .append('text')
+            .attr(
+              'transform',
+              'translate(' +
+                width_scatter / 2 +
+                ' ,' +
+                (height_scatter + margin_scatter.top +13) +
+                ')'
+            )
+            .style('text-anchor', 'middle')
+            .style('font', '20px times')
+            .text('Total Cases');
 
-        //arrow for annotation
-        svg_scatter
-          .append('svg:defs')
-          .append('svg:marker')
-          .attr('id', 'triangle')
-          .attr('refX', 6)
-          .attr('refY', 6)
-          .attr('markerWidth', 30)
-          .attr('markerHeight', 30)
-          .attr('markerUnits', 'userSpaceOnUse')
-          .attr('orient', 'auto')
-          .append('path')
-          .attr('d', 'M 0 0 12 6 0 12 3 6')
-          .style('fill', 'lightblue');
+          // Add Y axis
+          var y = d3
+            .scaleLinear()
+            .domain([0, 160000])
+            .range([height_scatter, 0]);
+          svg_scatter.append('g').call(d3.axisLeft(y));
 
-        //line for annotation
-        svg_scatter
-          .append('line')
-          .attr('x1', 950)
-          .attr('y1', 160)
-          .attr('x2', 1000)
-          .attr('y2', 70)
-          .attr('stroke-width', 2)
-          .attr('stroke', 'blue')
-          .attr('marker-end', 'url(#triangle)');
+          svg_scatter
+            .append('text')
+            .attr('transform', 'rotate(-90)')
+            .attr('y', 0-margin_scatter.left)
+            .attr('x', 0-height_scatter/2)
+            .attr('dy', '1em')
+            .style('text-anchor', 'middle')
+            .style('font', '20px times')
+            .text(' Total Deaths ');
 
-        // text for annotation
-        svg_scatter
-          .append('text')
-          .attr('x', 750)
-          .attr('y', 185)
-          .attr('font-family', 'sans-serif')
-          .attr('font-size', 15)
-          .style('fill', 'blue')
-          .style('text-decoration', 'underline')
-          .text('USA reported highest cases and deaths');
+          // Tooltip setting for mouseover event
+          var tooltip = d3
+            .select('#narrative_viz')
+            .append('div')
+            .attr('class', 'tooltip')
+            .style('opacity', 0);
 
-        // Add circle dots on svg chart
-        svg_scatter
-          .append('g')
-          .selectAll('dot')
-          .data(data)
-          .enter()
-          .append('circle')
-          .attr('cx', function (d) {
-            return x(d.total_cases);
-          })
-          .attr('cy', function (d) {
-            return y(d.total_deaths);
-          })
-          .attr('r', function (d, i) {
-            return sizeScale(d.total_cases);
-          })
-          .style('fill', function (d) {
-            return color(d.total_cases);
-          })
-          .on('mouseover', tipMouseover)
-          .on('mouseout', tipMouseout);
+          // tooltip mouseover event handler
+          var tipMouseover = function (d) {
+            //var color = color(d.jurisdiction);
+            var html =
+              '<span>' +
+              d.location +
+              '</span><br/>' +
+              "<b style='color: red'>" +
+              d.total_deaths +
+              "</b> Deaths, <b style='color: darkred'>" +
+              d.total_cases +
+              '</b> Total Cases';
 
-        // X axis based on transition domain fixed based on total cases count
-        x.domain([3000, 5000000]);
-        svg_scatter
-          .select('.myXaxis')
-          .transition()
-          .duration(9000)
-          .attr('opacity', '1')
-          .call(d3.axisBottom(x));
+            tooltip
+              .html(html)
+              .style('left', d3.event.pageX + 15 + 'px')
+              .style('top', d3.event.pageY - 28 + 'px')
+              .transition()
+              .duration(200) // ms
+              .style('opacity', 0.9); // started as 0!
+          };
 
-        svg_scatter
-          .selectAll('circle')
-          .transition()
-          .delay(function (d, i) {
-            return i * 4;
-          })
-          .duration(9000)
-          .attr('cx', function (d) {
-            return x(d.total_cases);
-          })
-          .attr('cy', function (d) {
-            return y(d.total_deaths);
-          });
+          // tooltip mouseout event handler
+          var tipMouseout = function (d) {
+            tooltip
+              .transition()
+              .duration(300) // ms
+              .style('opacity', 0); // don't care about position!
+          };
 
-        // add state name abbreviation to the circles as label
-        svg_scatter
-          .append('g')
-          .selectAll('text')
-          .data(data)
-          .enter()
-          .append('text')
-          .transition()
-          .delay(function (d, i) {
-            return i * 4;
-          })
-          .duration(9000)
-          .text(function (d) {
-            return d.abbr;
-          })
-          .attr('x', function (d) {
-            return x(d.total_cases);
-          })
-          .attr('y', function (d) {
-            return y(d.total_deaths);
-          })
-          .attr('font_family', 'Trebuchet MS') // Font type
-          .attr('font-size', '8px')
-          .attr('text-anchor', 'middle') // Font size
-          .style('fill', 'white');
-      });
-      
-       ///////////////////////////////////Beginning of Deaths by state bar plot code //////////////////////
+          //arrow for annotation
+          svg_scatter
+            .append('svg:defs')
+            .append('svg:marker')
+            .attr('id', 'triangle')
+            .attr('refX', 6)
+            .attr('refY', 6)
+            .attr('markerWidth', 30)
+            .attr('markerHeight', 30)
+            .attr('markerUnits', 'userSpaceOnUse')
+            .attr('orient', 'auto')
+            .append('path')
+            .attr('d', 'M 0 0 12 6 0 12 3 6')
+            .style('fill', 'lightblue');
 
-    // Set width, height and margin for this chart
-    var margin1 = {top: 50, right: 30, bottom: 80, left: 60},
-        width1 = 1200 - margin1.left - margin1.right,
-        height1 = 400 - margin1.top - margin1.bottom;
-    
-    // append the svg object to the body of the page
-    var svg2 = d3.select("#narrative_viz1")
-        .append("svg")
-        .attr("width", width1 + margin1.left + margin1.right)
-        .attr("height", height1 + margin1.top + margin1.bottom)
-        .append("g")
-        .attr("transform",
-            "translate(" + margin1.left + "," + margin1.top + ")");
+          //line for annotation
+          svg_scatter
+            .append('line')
+            .attr('x1', 950)
+            .attr('y1', 160)
+            .attr('x2', 1000)
+            .attr('y2', 70)
+            .attr('stroke-width', 2)
+            .attr('stroke', 'blue')
+            .attr('marker-end', 'url(#triangle)');
 
-    // Initialize the X axis
-    var x_b = d3.scaleBand()
-        .range([0, width1 ])
-        .padding(0.2);
-    var xAxis_b = svg2.append("g")
-        .attr("transform", "translate(0," + height1 + ")")
+          // text for annotation
+          svg_scatter
+            .append('text')
+            .attr('x', 750)
+            .attr('y', 185)
+            .attr('font-family', 'sans-serif')
+            .attr('font-size', 15)
+            .style('fill', 'blue')
+            .style('text-decoration', 'underline')
+            .text('USA reported highest cases and deaths');
 
-    // Initialize the Y axis
-    var y_b = d3.scaleLinear()
-        .range([height1, 0]);
-    var yAxis_b = svg2.append("g")
-        .attr("class", "myYaxis")
-
-
-    // Load US cases and deaths data 
-    d3.csv("data/covid_total_tests_per_country_07252020.csv", function (data) {
-
-       
-        var color = d3.scaleOrdinal(d3.schemeCategory10)
-        //var colorScale = d3.category20c();
-        // X axis
-        x_b.domain(data.map(function (d) {
-            return d[Total tests];
-        }))
-        xAxis_b.transition().duration(1000).call(d3.axisBottom(x_b)).selectAll("text")
-            .attr("transform", "translate(-10,0)rotate(-45)")
-            .style("text-anchor", "end");
-
-        // text label for the x axis
-        svg2.append("text")
-            .attr("transform",
-                "translate(" + (width1 / 2.3) + " ," +
-                (height1 + margin1.top + 20) + ")")
-            .style("text-anchor", "middle")
-            .text("Country Name");
-
-        // Add Y axis
-        y_b.domain([0, d3.max(data, function (d) {
-            return +d.Deaths
-        })]);
-        yAxis_b.transition().duration(1000).call(d3.axisLeft(y_b));
-
-        svg2.append("text")
-            .attr("transform", "rotate(-90)")
-            .attr("y", 0 - margin1.left)
-            .attr("x", 0 - (height1 / 2))
-            .attr("dy", "1em")
-            .style("text-anchor", "middle")
-            .text("Total Deaths");
-
-        // variable u: map data to existing bars
-        var u2 = svg2.selectAll("rect")
+          // Add circle dots on svg chart
+          svg_scatter
+            .append('g')
+            .selectAll('dot')
             .data(data)
-
-        // update bars to reflect the three regions based on total number of deaths 
-        u2
             .enter()
-            .append("rect")
-            .merge(u2)
+            .append('circle')
+            .attr('cx', function (d) {
+              return x(d.total_cases);
+            })
+            .attr('cy', function (d) {
+              return y(d.total_deaths);
+            })
+            .attr('r', function (d, i) {
+              return sizeScale(d.total_cases);
+            })
+            .style('fill', function (d) {
+              return color(d.total_cases);
+            })
+            .on('mouseover', tipMouseover)
+            .on('mouseout', tipMouseout);
+
+          // X axis based on transition domain fixed based on total cases count
+          x.domain([3000, 5000000]);
+          svg_scatter
+            .select('.myXaxis')
             .transition()
-            .duration(1000)
-            .attr("x", function (d) {
-                return x_b(d['location']);
+            .duration(9000)
+            .attr('opacity', '1')
+            .call(d3.axisBottom(x));
+
+          svg_scatter
+            .selectAll('circle')
+            .transition()
+            .delay(function (d, i) {
+              return i * 4;
             })
-            .attr("y", function (d) {
-                return y_b(d['total_tests']);
+            .duration(9000)
+            .attr('cx', function (d) {
+              return x(d.total_cases);
             })
-            .attr("width", x_b.bandwidth())
-            .attr("height", function (d) {
-                return height1 - y_b(d.total_tests);
-            })
-            // add color range per total no. of deaths
-            .attr("class", function (d) {
-                var s = "bar ";
-                if (d.total_tests < 5000000) {
-                    return s + "bar1";
-                } else if (d.total_tests < 100000) {
-                    return s + "bar2";
-                } else {
-                    return s + "bar3";
-                }
+            .attr('cy', function (d) {
+              return y(d.total_deaths);
             });
 
-        // add legend 
-
-        svg2.append("circle").attr("cx",900).attr("cy",60).attr("r", 6).style("fill", "#008B8B")
-        svg2.append("circle").attr("cx",900).attr("cy",90).attr("r", 6).style("fill", "#FB7E81")
-        svg2.append("circle").attr("cx",900).attr("cy",120).attr("r", 6).style("fill", "#9E0508")
-        svg2.append("text").attr("x", 920).attr("y", 60).text("Total deaths > 10000").style("font-size", "15px").attr("alignment-baseline","middle")
-        svg2.append("text").attr("x", 920).attr("y", 90).text("Total deaths < 10000").style("font-size", "15px").attr("alignment-baseline","middle")
-        svg2.append("text").attr("x", 920).attr("y", 120).text("Total deaths < 5000").style("font-size", "15px").attr("alignment-baseline","middle")
-    })
-
-    ///////////////////////////////////End of Deaths by state bar plot code //////////////////////
-
-      
+          // add state name abbreviation to the circles as label
+          svg_scatter
+            .append('g')
+            .selectAll('text')
+            .data(data)
+            .enter()
+            .append('text')
+            .transition()
+            .delay(function (d, i) {
+              return i * 4;
+            })
+            .duration(9000)
+            .text(function (d) {
+              return d.abbr;
+            })
+            .attr('x', function (d) {
+              return x(d.total_cases);
+            })
+            .attr('y', function (d) {
+              return y(d.total_deaths);
+            })
+            .attr('font_family', 'Trebuchet MS') // Font type
+            .attr('font-size', '8px')
+            .attr('text-anchor', 'middle') // Font size
+            .style('fill', 'white');
+        });
     </script>
   </body>
 </html>
