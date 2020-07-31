@@ -367,10 +367,10 @@
           .enter()
           .append('circle')
           .attr('cx', function (d) {
-            return x(d.total_deaths);
+            return x(d.total_cases);
           })
           .attr('cy', function (d) {
-            return y(d.total_cases);
+            return y(d.total_deaths);
           })
           .attr('r', function (d, i) {
             return sizeScale(d.total_cases);
@@ -382,7 +382,7 @@
           .on('mouseout', tipMouseout);
 
         // X axis based on transition domain fixed based on deaths count
-        x.domain([10000, 5000000]);
+        x.domain([3000, 5000000]);
         svg_scatter
           .select('.myXaxis')
           .transition()
@@ -394,7 +394,7 @@
           .selectAll('circle')
           .transition()
           .delay(function (d, i) {
-            return i * 3;
+            return i * 4;
           })
           .duration(3000)
           .attr('cx', function (d) {
@@ -415,7 +415,7 @@
           .delay(function (d, i) {
             return i * 3;
           })
-          .duration(2000)
+          .duration(3000)
           .text(function (d) {
             return d.abbr;
           })
