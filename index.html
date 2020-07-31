@@ -257,13 +257,13 @@
   }
   return d;
 };
-        var x = d3.scaleLinear().domain([0, 0]).range([0, width_scatter]).ticks(5).tickFormat(myTickFormat);
+        var x = d3.scaleLinear().domain([0, 0]).range([0, width_scatter]);
 
         svg_scatter
           .append('g')
           .attr('class', 'myXaxis') // Note that here we give a class to the X axis, to be able to call it later and modify it
           .attr('transform', 'translate(0,' + height_scatter + ')')
-          .call(d3.axisBottom(x))
+          .call(d3.axisBottom(x.ticks(5).tickFormat(myTickFormat)))
           .attr('opacity', '0');
 
         // text label for the x axis
