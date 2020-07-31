@@ -251,14 +251,13 @@
         // Add X axis
 
         var x = d3.scaleLinear.domain([1000, 10000000]).range([ 0, width_scatter ]);
-        var x_axis = d3.axisBottom(x).ticks(4).tickFormat(d3.format(".0s"));
         //var x = d3.scaleLinear().domain([0, 0]).range([0, width_scatter]);
 
         svg_scatter
           .append('g')
           .attr('class', 'myXaxis') // Note that here we give a class to the X axis, to be able to call it later and modify it
           .attr('transform', 'translate(0,' + height_scatter + ')')
-          .call(x_axis)
+          .call(d3.)
           .attr('opacity', '0');
 
         // text label for the x axis
@@ -538,9 +537,9 @@
           // add color range per total no. of deaths
           .attr('class', function (d) {
             var s = 'bar ';
-            if (d.total_tests < 500000) {
+            if (d.total_tests > 500000) {
               return s + 'bar1';
-            } else if (d.total_tests < 100000) {
+            } else if (d.total_tests > 100000 && d.total_tests < 500000  ) {
               return s + 'bar2';
             } else {
               return s + 'bar3';
