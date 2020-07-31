@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+z<!DOCTYPE html>
 <html lang="en">
   <head>
     <title>COVID - GLOBAL IMPACT</title>
@@ -246,7 +246,7 @@
           .range([8, 25]);
 
         // Add X axis
-        var x = d3.scaleLinear().domain([0, 0]).range([0, width_scatter]);
+        var x = d3.scaleLog().domain([1000, 1000000]).range([0, width_scatter]);
 
         svg_scatter
           .append('g')
@@ -272,7 +272,7 @@
 
         // Add Y axis
         var y = d3
-          .scaleLinear()
+          .scaleLog()
           .domain([0, 160000])
           .range([height_scatter, 0]);
         svg_scatter.append('g').call(d3.axisLeft(y));
