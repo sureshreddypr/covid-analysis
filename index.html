@@ -558,6 +558,8 @@
               .append('rect')
               .merge(u2)
               .transition()
+              .on('mouseover', tip.show)
+              .on('mouseout', tip.hide)
               .duration(1000)
               .attr('x', function (d) {
                 return x_b(d.location);
@@ -572,15 +574,14 @@
               // add color range per total no. of deaths
               .attr('class', function (d) {
                 var s = 'bar ';
-                if (d.total_tests > 500000) {
+                if (d.total_tests > 1000000) {
                   return s + 'bar1';
-                } else if (d.total_tests > 100000 && d.total_tests < 500000 ) {
+                } else if (d.total_tests > 500000 && d.total_tests < 1000000 ) {
                   return s + 'bar2';
                 } else {
                   return s + 'bar3';
                 }
-              .on('mouseover', tip.show)
-              .on('mouseout', tip.hide)
+              
               });
 
             // add legend
