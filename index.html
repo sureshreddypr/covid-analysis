@@ -250,8 +250,8 @@
 
         // Add X axis
 
-        var x = d3.scaleLinear.domain([1000, 10000000]).range([ 0, width_scatter ]);
-        //var x = d3.scaleLinear().domain([0, 0]).range([0, width_scatter]);
+        //var x = d3.scaleLinear.domain([1000, 10000000]).range([ 0, width_scatter ]);
+        var x = d3.scaleLinear().domain([0, 0]).range([0, width_scatter]);
 
         svg_scatter
           .append('g')
