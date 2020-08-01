@@ -45,7 +45,7 @@
       .topnav a {
         float: left;
         display: block;
-        color: darkblue;
+        color: grey;
         text-width: grey;
         text-align: center;
         padding: 5px 12px;
@@ -450,7 +450,7 @@
       // Set width, height and margin for this chart
       var margin1 = { top: 50, right: 30, bottom: 80, left: 60 },
         width1 = 1400 - margin1.left - margin1.right,
-        height1 = 500 - margin1.top - margin1.bottom;
+        height1 = 550 - margin1.top - margin1.bottom;
 
       // append the svg object to the body of the page
       var svg2 = d3
@@ -585,21 +585,21 @@
           .append('text')
           .attr('x', 720)
           .attr('y', 60)
-          .text('Total Tests > 500000')
+          .text('Total Tests > 1M')
           .style('font-size', '15px')
           .attr('alignment-baseline', 'middle');
         svg2
           .append('text')
           .attr('x', 720)
           .attr('y', 90)
-          .text('Total Tests < 100000')
+          .text('Total Tests > 500K & < 1M')
           .style('font-size', '15px')
           .attr('alignment-baseline', 'middle');
         svg2
           .append('text')
           .attr('x', 720)
           .attr('y', 120)
-          .text('Total Tests < 5000')
+          .text('Total Tests < 500K')
           .style('font-size', '15px')
           .attr('alignment-baseline', 'middle');
       });
