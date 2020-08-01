@@ -273,14 +273,8 @@
         // text label for the x axis
         svg_scatter
           .append('text')
-          .attr(
-            'transform',
-            'translate(' +
-              width_scatter / 2 +
-              ' ,' +
-              (height_scatter + margin_scatter.top + 15) +
-              ')'
-          )
+          .attr("x", width  - 300)
+          .attr("y", height +40)
           .style('text-anchor', 'middle')
           .style('font', '20px times')
           .text('Total Cases');
