@@ -206,7 +206,7 @@
       // set the dimensions and margins of the graph
       var margin_scatter = { top: 10, right: 30, bottom: 30, left: 60 },
         width_scatter = 1200 - margin_scatter.left - margin_scatter.right,
-        height_scatter = 450 - margin_scatter.top - margin_scatter.bottom;
+        height_scatter = 500 - margin_scatter.top - margin_scatter.bottom;
 
       // append the svg object to the body of the page
       var svg_scatter = d3
@@ -246,9 +246,10 @@
         var sizeScale = d3
           .scaleLinear()
           .domain([minVal, maxVal])
-          .range([2, 30]);
+          .range([2, 40]);
 
         // Add X axis
+
         var x = d3.scaleLinear().domain([0, 0]).range([0, width_scatter]);
 
         svg_scatter
@@ -259,7 +260,6 @@
           .attr('opacity', '0');
 
         // text label for the x axis
-        x.domain([1000, 5000000]);
         svg_scatter
           .append('text')
           .attr(
@@ -385,6 +385,7 @@
           .on('mouseout', tipMouseout);
 
         // X axis based on transition domain fixed based on total cases count
+        x.domain([3000, 5000000]);
         svg_scatter
           .select('.myXaxis')
           .transition()
@@ -437,8 +438,8 @@
 
       // Set width, height and margin for this chart
       var margin1 = { top: 50, right: 30, bottom: 80, left: 60 },
-        width1 = 1200 - margin1.left - margin1.right,
-        height1 = 450 - margin1.top - margin1.bottom;
+        width1 = 1600 - margin1.left - margin1.right,
+        height1 = 500 - margin1.top - margin1.bottom;
 
       // append the svg object to the body of the page
       var svg2 = d3
@@ -476,7 +477,7 @@
         );
         xAxis_b
           .transition()
-          .duration(4000)
+          .duration(1000)
           .call(d3.axisBottom(x_b))
           .selectAll('text')
           .attr('transform', 'translate(-10,0)rotate(-45)')
@@ -536,9 +537,9 @@
           // add color range per total no. of deaths
           .attr('class', function (d) {
             var s = 'bar ';
-            if (d.total_tests > 500000) {
+            if (d.total_tests < 500000) {
               return s + 'bar1';
-            } else if (d.total_tests > 100000 && d.total_tests < 500000  ) {
+            } else if (d.total_tests < 100000) {
               return s + 'bar2';
             } else {
               return s + 'bar3';
@@ -552,7 +553,7 @@
           .attr('cx', 700)
           .attr('cy', 60)
           .attr('r', 6)
-          .style('fill', '#9E0508');
+          .style('fill', '#008B8B');
         svg2
           .append('circle')
           .attr('cx', 700)
@@ -564,7 +565,7 @@
           .attr('cx', 700)
           .attr('cy', 120)
           .attr('r', 6)
-          .style('fill', '#008B8B');
+          .style('fill', '#9E0508');
         svg2
           .append('text')
           .attr('x', 720)
@@ -588,7 +589,7 @@
           .attr('alignment-baseline', 'middle');
       });
 
-      ///////////////////////////////////End of Deaths by state bar plot code //////////////////////
+      //Total Cases - End //--------------
     </script>
   </body>
 </html>
