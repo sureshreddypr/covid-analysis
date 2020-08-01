@@ -464,6 +464,10 @@
 
       ///////////////////////////////////Beginning of Deaths by state bar plot code //////////////////////
 
+      import * as d3 from "d3"
+      import * as d3Tip from "d3-tip"
+      (d3 as any).tip = d3Tip
+
       // Set width, height and margin for this chart
       var margin1 = { top: 50, right: 30, bottom: 80, left: 60 },
         width1 = 1400 - margin1.left - margin1.right,
@@ -491,8 +495,7 @@
       var y_b = d3.scaleLinear().range([height1, 0]);
       var yAxis_b = svg2.append('g').attr('class', 'myYaxis');
 
-      var tip = d3
-        .tip()
+      var tip = d3Tip
         .attr('class', 'd3-tip')
         .offset([-10, 0])
         .html(function (d) {
