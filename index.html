@@ -554,14 +554,7 @@
             } else {
               return s + 'bar3';
             }
-          .on("mousemove", function(d){
-            barToolTip
-              .style("left", d3.event.pageX - 50 + "px")
-              .style("top", d3.event.pageY - 70 + "px")
-              .style("display", "inline-block")
-              .html(d.total_cases);
-        })
-      .on("mouseout", function(d){ barToolTip.style("display", "none");
+          
           });
 
         // add legend
