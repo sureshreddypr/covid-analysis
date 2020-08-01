@@ -273,8 +273,14 @@
         // text label for the x axis
         svg_scatter
           .append('text')
-          .attr("x", width_scatter - 300)
-          .attr("y", height_scatter +40)
+          .attr(
+            'transform',
+            'translate(' +
+              width_scatter / 2 +
+              ' ,' +
+              (height_scatter + margin_scatter.top + 15) +
+              ')'
+          )
           .style('text-anchor', 'middle')
           .style('font', '20px times')
           .text('Total Cases');
@@ -286,8 +292,8 @@
         svg_scatter
           .append('text')
           .attr('transform', 'rotate(-90)')
-          .attr('y', height_scatter-40)
-          .attr('x', width_scatter-180)
+          .attr('y', 0 - margin_scatter.left)
+          .attr('x', 0 - height_scatter / 2)
           .attr('dy', '1em')
           .style('text-anchor', 'middle')
           .style('font', '20px times')
