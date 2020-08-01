@@ -91,14 +91,18 @@
          }
          /* bar toolTip */
          .barToolTip {
-         position: absolute;
-         display: none;
-         min-width: 80px;
-         height: auto;
-         background: none repeat scroll 0 0 #ffffff;
-         border: 1px solid #6F257F;
-         padding: 14px;
-         text-align: center;
+         position      : absolute;
+         text-align    : center;
+         max-width     : 70px;
+         max-height    : 30px;
+         padding       : 8px;
+         border        : none;
+         border-radius : 8px;
+         margin-top    : -30px;
+         font          : 10px sans-serif;
+         background    : black;
+         color         : white;
+         pointer-events: none;
          }
       </style>
    </head>
@@ -301,6 +305,8 @@
              .merge(u2)
              .transition()
              .duration(1000)
+             .on("mouseover", onMouseOver)                  
+             .on("mouseout", onMouseOut)
              .attr('x', function (d) {
                return x_b(d.location);
              })
@@ -324,6 +330,32 @@
              
              });
          
+           // function call backs for mouseover and mouseout
+            
+            function onMouseOver(d){
+
+               var tooltipDiv = d3.select("barToolTip"); 
+                        tooltipDiv.transition()        
+                         .duration(200)      
+                         .style("opacity", 1);    
+
+                        tooltipDiv.html( "your Content")
+                         .style("left", (parseFloat(widthScale(d.total_tests))) + "px") 
+                         .style("cursor", "pointer")
+                         .style("top", function(d){
+                     return d3.event.pageY - this.offsetHeight - 17  + "px"
+                  })
+               .style("color", "#333333");        
+            }
+
+            function onMouseOut(d){
+                var tooltipDiv = d3.select("barToolTip"); 
+                        tooltipDiv.transition()        
+                                  .duration(500)      
+                                  .style("opacity", 0);  
+            }
+            
+            
            // add legend
          
            svg2
