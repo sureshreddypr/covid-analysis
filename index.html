@@ -16,7 +16,7 @@
         background-image: url('data/covid-19.png');
         background-repeat: no-repeat;
         background-attachment: fixed;
-        background-size: 100% 100%;
+        background-size: 80% 80%;
       }
 
       .header h1 {
@@ -283,7 +283,7 @@
               ')'
           )
           .style('text-anchor', 'middle')
-          .style('font', '20px times')
+          .style('font', '16px times')
           .text('Total Cases');
 
         // Add Y axis
@@ -297,7 +297,7 @@
           .attr('x', 0 - height_scatter / 2)
           .attr('dy', '1em')
           .style('text-anchor', 'middle')
-          .style('font', '20px times')
+          .style('font', '16px times')
           .text(' Total Deaths ');
 
         // Tooltip setting for mouseover event
@@ -450,7 +450,7 @@
       // Set width, height and margin for this chart
       var margin1 = { top: 10, right: 40, bottom: 80, left: 60 },
         width1 = 1400 - margin1.left - margin1.right,
-        height1 = 450 - margin1.top - margin1.bottom;
+        height1 = 550 - margin1.top - margin1.bottom;
 
       // append the svg object to the body of the page
       var svg2 = d3
