@@ -345,7 +345,7 @@
           .attr('orient', 'auto')
           .append('path')
           .attr('d', 'M 0 0 12 6 0 12 3 6')
-          .style('fill', 'red');
+          .style('fill', '#739AC5');
 
         //line for annotation
         svg_scatter
@@ -355,17 +355,17 @@
           .attr('x2', 1000)
           .attr('y2', 70)
           .attr('stroke-width', 2)
-          .attr('stroke', 'red')
+          .attr('stroke', '#739AC5')
           .attr('marker-end', 'url(#triangle)');
 
         // text for annotation
         svg_scatter
           .append('text')
-          .attr('x', 700)
-          .attr('y', 165)
+          .attr('x', 660)
+          .attr('y', 185)
           .attr('font-family', 'Trebuchet MS')
           .attr('font-size', 14)
-          .style('fill', 'grey')
+          .style('fill', '#739AC5')
           .text('So far USA reported highest cases and deaths and is hotspot country');
 
         // Add circle dots on svg chart
