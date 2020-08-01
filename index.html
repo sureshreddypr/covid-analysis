@@ -87,13 +87,13 @@
       }
 
       .bar1 {
-        fill: #009ACD;
+        fill: #008B8B;
       }
       .bar2 {
-        fill: #0a81a8;
+        fill: #FB7E81;
       }
       .bar3 {
-        fill: #e3486c;
+        fill: #9E0508;
       }
       .bar:hover {
         fill: orange;
@@ -537,9 +537,9 @@
           // add color range per total no. of deaths
           .attr('class', function (d) {
             var s = 'bar ';
-            if (d.total_tests < 500000) {
+            if (d.total_tests > 500000) {
               return s + 'bar1';
-            } else if (d.total_tests < 100000) {
+            } else if (d.total_tests > 100000 && d.total_tests < 500000 ) {
               return s + 'bar2';
             } else {
               return s + 'bar3';
