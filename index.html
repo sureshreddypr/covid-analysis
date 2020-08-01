@@ -66,7 +66,7 @@
         position: absolute;
         display: inline;
         overflow: auto;
-        font-size: 15px;
+        font-size: 14px;
         width: auto;
         height: auto;
         pointer-events: none;
@@ -413,7 +413,7 @@
             return y(d.total_deaths);
           });
 
-        // add state name abbreviation to the circles as label
+        // add country name abbreviation to the circles as label
         svg_scatter
           .append('g')
           .selectAll('text')
@@ -440,7 +440,7 @@
           .style('fill', 'white');
       });
 
-      ///////////////////////////////////Beginning of Deaths by state bar plot code //////////////////////
+      ////////////////////////start -  total tests histogram chart //////////////////////
 
       // Set width, height and margin for this chart
       var margin1 = { top: 10, right: 50, bottom: 100, left: 60 },
@@ -498,9 +498,9 @@
           .attr(
             'transform',
             'translate(' +
-              width1 / 2.3 +
+              width1 / 4.3 +
               ' ,' +
-              (height1 + margin1.top + 20) +
+              (height1 + margin1.top + 25) +
               ')'
           )
           .style('text-anchor', 'middle')
