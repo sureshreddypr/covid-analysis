@@ -371,7 +371,7 @@
           .attr('font-size', 15)
           .style('fill', 'red')
           .style('text-decoration', 'underline')
-          .text('USA reported highest cases and deaths');
+          .text('So far USA reported highest cases and deaths and is hotspot country');
 
         // Add circle dots on svg chart
         svg_scatter
@@ -567,7 +567,7 @@
               .style("display", "inline-block")
               .html(d.total_cases);
         })
-      .on("mouseout", function(d){ barToolTip.style("display", "none");});
+      .on("mouseout", function(d){ barToolTip.style("display", "none");
           });
 
         // add legend
