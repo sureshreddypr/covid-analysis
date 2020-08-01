@@ -4,6 +4,7 @@
     <title>COVID - GLOBAL IMPACT</title>
     <meta charset="utf-8" />
     <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="d3-tip.js"></script>
     <meta
       name="viewport"
       content="width=device-width, initial-scale=0.86, maximum-scale=3.0, minimum-scale=0.86"
@@ -464,10 +465,6 @@
 
       ///////////////////////////////////Beginning of Deaths by state bar plot code //////////////////////
 
-      import * as d3 from "d3"
-      import * as d3Tip from "d3-tip"
-      (d3 as any).tip = d3Tip
-
       // Set width, height and margin for this chart
       var margin1 = { top: 50, right: 30, bottom: 80, left: 60 },
         width1 = 1400 - margin1.left - margin1.right,
@@ -495,7 +492,7 @@
       var y_b = d3.scaleLinear().range([height1, 0]);
       var yAxis_b = svg2.append('g').attr('class', 'myYaxis');
 
-      var tip = d3Tip
+      var tip = d3.tip
         .attr('class', 'd3-tip')
         .offset([-10, 0])
         .html(function (d) {
