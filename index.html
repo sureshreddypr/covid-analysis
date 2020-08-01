@@ -296,7 +296,7 @@
            // variable u: map data to existing bars
            var u2 = svg2.selectAll('rect').data(data);
          
-           // update bars to reflect the three regions based on total number of deaths
+           // update bars to reflect the three regions based on total number of tests
            u2.enter()
              .append('rect')
              .merge(u2)
@@ -312,7 +312,7 @@
              .attr('height', function (d) {
                return height1 - y_b(d.total_tests);
              })
-             // add color range per total no. of deaths
+             // add color range per total no. of tests
              .attr('class', function (d) {
                var s = 'bar ';
                if (d.total_tests > 1000000) {
