@@ -99,33 +99,16 @@
       .bar:hover {
         fill: orange;
       }
-      .d3-tip {
-        line-height: 1;
-        font-weight: bold;
-        padding: 12px;
-        background: rgba(0, 0, 0, 0.8);
-        color: #fff;
-        border-radius: 2px;
-      }
-
-      /* Creates a small triangle extender for the tooltip */
-      .d3-tip:after {
-        box-sizing: border-box;
-        display: inline;
-        font-size: 10px;
-        width: 100%;
-        line-height: 1;
-        color: rgba(0, 0, 0, 0.8);
-        content: '\25BC';
+      /* bar toolTip */
+      .barToolTip {
         position: absolute;
+        display: none;
+        min-width: 80px;
+        height: auto;
+        background: none repeat scroll 0 0 #ffffff;
+        border: 1px solid #6F257F;
+        padding: 14px;
         text-align: center;
-      }
-
-      /* Style northward tooltips differently */
-      .d3-tip.n:after {
-        margin: -1px 0 0 0;
-        top: 100%;
-        left: 0;
       }
     </style>
   </head>
@@ -492,16 +475,8 @@
       var y_b = d3.scaleLinear().range([height1, 0]);
       var yAxis_b = svg2.append('g').attr('class', 'myYaxis');
 
-      var tip = d3.tip
-        .attr('class', 'd3-tip')
-        .offset([-10, 0])
-        .html(function (d) {
-          return (
-            "<strong>Frequency:</strong> <span style='color:red'>" +
-            d.total_tests +
-            '</span>'
-          );
-        });
+      var barTooltip = d3.select("body").append("div").attr("class", "barToolTip");
+
 
       // Load US cases and deaths data
       d3.csv('data/covid_total_tests_per_country_07252020.csv', function (
@@ -565,8 +540,6 @@
           .append('rect')
           .merge(u2)
           .transition()
-          .on('mouseover', tip.show)
-          .on('mouseout', tip.hide)
           .duration(1000)
           .attr('x', function (d) {
             return x_b(d.location);
@@ -588,6 +561,14 @@
             } else {
               return s + 'bar3';
             }
+          .on("mousemove", function(d){
+            tooltip
+              .style("left", d3.event.pageX - 50 + "px")
+              .style("top", d3.event.pageY - 70 + "px")
+              .style("display", "inline-block")
+              .html(d.total_cases);
+        })
+      .on("mouseout", function(d){ tooltip.style("display", "none");});
           });
 
         // add legend
