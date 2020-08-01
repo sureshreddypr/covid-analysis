@@ -273,7 +273,7 @@
         // text label for the x axis
         svg_scatter
           .append('text')
-          .attr("x", width_scatter  - 300)
+          .attr("x", width_scatter - 300)
           .attr("y", height_scatter +40)
           .style('text-anchor', 'middle')
           .style('font', '20px times')
@@ -286,8 +286,8 @@
         svg_scatter
           .append('text')
           .attr('transform', 'rotate(-90)')
-          .attr('y', -40)
-          .attr('x', -180)
+          .attr('y', height_scatter-40)
+          .attr('x', width_scatter-180)
           .attr('dy', '1em')
           .style('text-anchor', 'middle')
           .style('font', '20px times')
