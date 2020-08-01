@@ -13,7 +13,7 @@
         margin: 0;
         font: 11px Trebuchet MS;
         background-color: #grey;
-        background-image: url('data/bg.jpg');
+        background-image: url('data/covid-19.jpg');
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-size: 100% 100%;
@@ -198,8 +198,9 @@
             >https://www.cdc.gov/coronavirus/2019-nCoV/index.html</a
           >
           <br />
-          <b>Data Courtesy:</b
-          ><a href="https://www.cdc.gov/"> https://www.cdc.gov/</a>
+          <b>Data References:</b
+          ><a href="https://globalhealth5050.org/covid19/sex-disaggregated-data-tracker/#1593530684002-e87481be-8709"> 
+          https://globalhealth5050.org/covid19/sex-disaggregated-data-tracker/#1593530684002-e87481be-8709</a>
           <br />
           <b>Image Courtesy:</b
           ><a href="https://phil.cdc.gov/Details.aspx?pid=23311">
@@ -476,7 +477,7 @@
       var barTooltip = d3.select("body").append("div").attr("class", "barToolTip");
 
 
-      // Load US cases and deaths data
+      // Load Total test cases data
       d3.csv('data/covid_total_tests_per_country_07252020.csv', function (
         data
       ) {
@@ -490,7 +491,7 @@
         );
         xAxis_b
           .transition()
-          .duration(5000)
+          .duration(6000)
           .call(d3.axisBottom(x_b))
           .selectAll('text')
           .attr('transform', 'translate(-10,0)rotate(-45)')
@@ -509,7 +510,7 @@
           )
           .style('text-anchor', 'middle')
           .text('Country Name');
-
+        
         // Add Y axis
         y_b.domain([
           0,
