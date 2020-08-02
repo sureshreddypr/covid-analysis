@@ -192,8 +192,8 @@
 	      
     // set the dimensions and margins of the graph
     var margin = {top: 50, right: 30, bottom: 80, left: 60},
-        width = 1060 - margin.left - margin.right,
-        height = 400 - margin.top - margin.bottom;
+        width = 1200 - margin.left - margin.right,
+        height = 500 - margin.top - margin.bottom;
 	
 	var formatInteger = d3.format(",");
 	var formatDecimal = d3.format(",.2f");
@@ -226,9 +226,8 @@
 
     // A function that create / update the plot for a given variable:
     function update(selectedVar) {
-	   gender = selectedVar; 
 	    
-	    fill_color = function(gender) {if (gender==="Male") {return "#008B8B"}else {return "#9E0508"} };
+	    fill_color = function(selectedVar) {if (gender=="Male") {return "#008B8B"}else {return "#9E0508"} };
 	    
         // Parse the Data
         d3.csv("data/sex-disaggregated_covid_data_07252020.csv", function(data) {
