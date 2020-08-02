@@ -4,10 +4,6 @@
       <title>COVID-19 - GLOBAL IMPACT SUMMARY</title>
       <meta charset="utf-8" />
       <script src="https://d3js.org/d3.v4.min.js"></script>
-      <meta
-         name="viewport"
-         content="width=device-width, initial-scale=1.0"
-         />
       <style>
          body {
          margin: 0;
@@ -76,6 +72,8 @@
          position: center;
          margin: 1px;
          width: 100%;
+	 min-width:720px;
+	 max-width:1920px;
          }
          .bar1 {
          fill: #008B8B;
@@ -107,9 +105,8 @@
       </style>
    </head>
    <body>
-      <div style="background-color: #803432; max-width: 1920px; min-width:480px; width:90%; height:1000px; margin-left: -8px"; overflow:hidden">
-	   </div>	
-      <div class="header">
+    <div class="container">
+
          <h1
             style="
             text-align: center;
@@ -122,13 +119,11 @@
          </h1>
       </div>
       <div class="body">
-         <div class="container">
             <div class="topnav" >
                <a href="index.html"><b>COVID-19 TESTS SUMMARY</b></a>
                <a href="casesvsdeaths.html"><b>CASES AND DEATHS</b></a>
                <a href="sexdisagginfo.html"><b>SEX DISAGGREGATED INFO</b></a>
             </div>
-         </div>
          <p
             style="
             font-family: Trebuchet MS;
@@ -208,6 +203,8 @@
             </p>
          </footer>
       </div>
+     </div>
+
       <script type="text/javascript">
          
          //////////////////////// start -  total tests bar chart //////////////////////
