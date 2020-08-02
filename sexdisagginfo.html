@@ -261,8 +261,42 @@
                 .text("Deaths Perentage");
             //color.domain(data.map(function (d){ return d.Country; }));
 		
+
+           // Tooltip setting for mouseover event
+           var tooltip = d3
+             .select('#narrative_viz3')
+             .append('div')
+             .attr('class', 'tooltip')
+             .style('opacity', 0);
+
+          // tooltip mouseover event handler
+           var tipMouseover = function (d) {
+             //var color = color(d.jurisdiction);
+             var html =
+               '<span> Country: <b>' +
+               d.country +
+               '</b></span><br/> Death % : ' +
+               "<b style='color: darkred'>" +
+               d.selectedVar  + '</b>';
 		
-		 //arrow for annotation
+             tooltip
+               .html(html)
+               .style('left', d3.event.pageX + 15 + 'px')
+               .style('top', d3.event.pageY - 28 + 'px')
+               .transition()
+               .duration(200) // ms
+               .style('opacity', 0.9); // started as 0!
+           };
+
+          // tooltip mouseout event handler
+           var tipMouseout = function (d) {
+             tooltip
+               .transition()
+               .duration(300) // ms
+               .style('opacity', 0); // don't care about position!
+           };
+		
+	   //arrow for annotation
            svg1
              .append('svg:defs')
              .append('svg:marker')
@@ -331,7 +365,10 @@
                 .attr("y", function(d) { return y1(d[selectedVar]); })
                 .attr("width", x1.bandwidth())
                 .attr("height", function(d) { return height - y1(d[selectedVar]); })
-                .attr("fill", "#FB7E81");
+                .attr("fill", "#FB7E81")
+		.on('mouseover', tipMouseover)
+             	.on('mouseout', tipMouseout);
+         
         })
      }
     update('Male')
