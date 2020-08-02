@@ -373,9 +373,9 @@
              // add color range per total no. of tests
              .attr('class', function (d) {
                var s = 'bar ';
-               if (d.total_tests > 1000000) {
+               if (d.total_tests > 10000000) {
                  return s + 'bar1';
-               } else if (d.total_tests > 500000 && d.total_tests < 1000000) {
+               } else if (d.total_tests > 1000000 && d.total_tests < 10000000) {
                  return s + 'bar2';
                } else {
                  return s + 'bar3';
@@ -433,21 +433,21 @@
              .append('text')
              .attr('x', 1020)
              .attr('y', 60)
-             .text('Total Tests > 1M')
+             .text('Total Tests > 10M')
              .style('font-size', '15px')
              .attr('alignment-baseline', 'middle');
            svg2
              .append('text')
              .attr('x', 1020)
              .attr('y', 90)
-             .text('Total Tests > 500K & < 1M')
+             .text('Total Tests > 1M & < 10M')
              .style('font-size', '15px')
              .attr('alignment-baseline', 'middle');
            svg2
              .append('text')
              .attr('x', 1020)
              .attr('y', 120)
-             .text('Total Tests < 500K')
+             .text('Total Tests < 1M')
              .style('font-size', '15px')
              .attr('alignment-baseline', 'middle');
          });
