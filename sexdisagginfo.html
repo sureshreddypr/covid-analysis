@@ -237,7 +237,7 @@
          
          ////////////////////////start -  total tests bar chart //////////////////////
 	      
-	d3.csv('data/covid_total_tests_per_country_07252020.csv', function (
+	d3.csv('data/sex-disaggregated_covid_data_07252020.csv', function (
            data_fatalrate
          );
          
@@ -254,15 +254,17 @@
 function change(value){
 
 	if(value === 'male'){
-		update(maleData);
+		gender = 'male'
+		update(maleData, gender);
 	}else if(value === 'female'){
-		update(femaleData);
+		gender = 'female'
+		update(femaleData, gender);
 	}else{
 		update(bothData);
 	}
 }
 
-function update(data){
+function update(data, gender ){
 	//set domain for the x axis
 	xChart.domain(data.map(function(d){ return d.Country; }) );
 	//set domain for y axis
@@ -286,7 +288,7 @@ function update(data){
 		.attr("height", function(d){ return height - yChart(d.deaths_male_percent); })
 		.attr("width", barWidth - 1)
 		.attr("fill", function(d){ 
-			if(d.deaths_male_percent){
+			if(gender=='female'){
 				return "rgb(251,180,174)";
 			}else{
 				return "rgb(179,205,227)";
