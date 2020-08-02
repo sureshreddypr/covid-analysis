@@ -196,13 +196,11 @@
         height = 400 - margin.top - margin.bottom;
 	
 	var formatInteger = d3.format(",");
-var formatDecimal = d3.format(",.2f");
+	var formatDecimal = d3.format(",.2f");
 
-function format(number){
-  return !(number % 1) ? formatInteger(number) : formatDecimal(number)
-}
-      
-	      
+	function format(number){
+  		return !(number % 1) ? formatInteger(number) : formatDecimal(number)
+	}  
 	      
     // append the svg object to the body of the page
     var svg1 = d3.select("#narrative_viz3")
@@ -247,7 +245,7 @@ function format(number){
                 .text("Country Name");
 
             // Add Y axis
-            y1.domain([0, d3.max(data, function(d) { return +d[format(selectedVar)] }) ]);
+            y1.domain([0, d3.max(data, function(format(d)) { return +d[selectedVar] }) ]);
             yAxis1.transition().duration(1000).call(d3.axisLeft(y1));
 
             svg1.append("text")
@@ -271,9 +269,9 @@ function format(number){
                 .transition()
                 .duration(1000)
                 .attr("x", function(d) { return x1(d.Country); })
-                .attr("y", function(d) { return y1(d[format(selectedVar)]); })
+                .attr("y", function(format(d)) { return y1(d[selectedVar]); })
                 .attr("width", x1.bandwidth())
-                .attr("height", function(d) { return height - y1(d[format(selectedVar)]); })
+                .attr("height", function(format(d)) { return height - y1(d[selectedVar]); })
                 .attr("fill", "abc");
         })
      }
