@@ -247,10 +247,18 @@
 
     // A function that create / update the plot for a given variable:
     function update(selectedVar) {
-
+	    
         // Parse the Data
         d3.csv("data/sex-disaggregated_covid_data_07252020.csv", function(data) {
-
+		
+	if (selectedVar=='Male'){
+		fill_color  = #008B8B;
+		selectedVar = data.death_male_percent;
+	}else {
+		fill_color  = #9E0508;
+		selectedVar = data.death_femmale_percent;
+	}
+		
 		// X axis
             x1.domain(data.map(function(d) { return d.Country; }))
             xAxis1.transition().duration(1000).call(d3.axisBottom(x1)).selectAll("text")
@@ -276,7 +284,7 @@
                 .attr("dy", "1em")
                 .style("text-anchor", "middle")
                 .text("Deaths Perentage");
-            color.domain(data.map(function (d){ return d.Country; }));
+            //color.domain(data.map(function (d){ return d.Country; }));
 
             // variable u: map data to existing bars
             var u = svg1.selectAll("rect")
@@ -289,12 +297,12 @@
                 .merge(u)
                 .transition()
                 .duration(1000)
-                .attr("x", function(d) { return x1(d.Group); })
+                .attr("x", function(d) { return x1(d.Country); })
                 .attr("y", function(d) { return y1(d[selectedVar]); })
                 .attr("width", x1.bandwidth())
                 .attr("height", function(d) { return height - y1(d[selectedVar]); })
-                .attr("fill", function(d){return colorScale(d.Country); })
-                .attr("fill", "#3b6199")
+                .attr("fill", fill_color)
+                //.attr("fill", "#3b6199")
 
 
         })}
