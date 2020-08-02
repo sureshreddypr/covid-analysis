@@ -281,9 +281,9 @@
            svg1
              .append('line')
              .attr('x1', 0)
-             .attr('y1', 250)
-             .attr('x2', 1000)
-             .attr('y2', 250)
+             .attr('y1', 500)
+             .attr('x2', 1300)
+             .attr('y2', 500)
              .attr('stroke-width', 2)
              .attr('stroke', '#739AC5')
              .attr('marker-end', 'url(#triangle)');
@@ -291,7 +291,7 @@
            // text for annotation
          svg1
              .append('text')
-             .attr('x', 100)
+             .attr('x', 40)
              .attr('y', 50)
              .attr('font-family', 'Trebuchet MS')
              .attr('font-size', 14)
@@ -299,7 +299,7 @@
              .text('So far 5 nations USA,RUS,IND,UK,BRA effectively conducted 10M+ covid tests.');
          svg1
             .append('text')
-             .attr('x', 100)
+             .attr('x', 40)
              .attr('y', 70)
              .attr('font-family', 'Trebuchet MS')
              .attr('font-size', 14)
@@ -307,7 +307,7 @@
              .text('Thus more cases and deaths are reported. No data found for China.'); 
 	svg1
             .append('text')
-             .attr('x', 100)
+             .attr('x', 40)
              .attr('y', 90)
              .attr('font-family', 'Trebuchet MS')
              .attr('font-size', 14)
@@ -315,15 +315,6 @@
              .text('The curve has fallen down for UK as the cases and deaths are reduced.'); 	 		 
 		 
 		 
-		
-		
-		
-		
-		
-		
-		
-		
-		
 
             // variable u: map data to existing bars
             var u = svg1.selectAll("rect")
