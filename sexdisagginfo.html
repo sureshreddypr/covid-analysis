@@ -243,7 +243,9 @@
                 .attr("transform",
                     "translate(" + (width/2) + " ," +
                     (height + margin.top + 20) + ")")
-                .style("text-anchor", "middle")
+                .style("text-anchor", "middle")		       
+             	.style('font-famliy', 'Trebuchet MS')
+             	.style('font', '16px times')
                 .text("Country Name");
 
             // Add Y axis
@@ -255,7 +257,9 @@
                 .attr("y", 0 - margin.left)
                 .attr("x",0 - (height / 2))
                 .attr("dy", "1em")
-                .style("text-anchor", "middle")
+                .style("text-anchor", "middle")		       
+             	.style('font-famliy', 'Trebuchet MS')
+             	.style('font', '16px times')
                 .text("Deaths Perentage");
             //color.domain(data.map(function (d){ return d.Country; }));
 
