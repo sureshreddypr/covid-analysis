@@ -12,7 +12,6 @@
          body {
          margin: 0;
          font: 11px Trebuchet MS;
-         background-color: #grey;
          background-image: url('data/covid-19.png');
          background-repeat: no-repeat;
          background-attachment: fixed;
@@ -131,9 +130,9 @@
             align="justify"
             >
             <b style="color: #803432; font-size: 18px;">
-         <p style="color:antiquewhite; font-size: 16px"> TOTAL CASES vs TOTAL DEATHS:<br/></b><br />
+         <p style="color:antiquewhite; font-size: 16px"> TOTAL CASES vs TOTAL DEATHS<br/></b><br />
          The following scatter plot represents the COVID-19 total cases vs
-         total deaths reported globally as of 07/25/2020. Hover over the circles
+         total deaths reported worldwide as of 07/25/2020. Hover over the circles
          to see the additional details. Annotation describes that the Top
          countries that are highly impacted reporting highest number of total
          cases and deaths in the world so far.</p><br />
@@ -337,7 +336,7 @@
              .attr('font-family', 'Trebuchet MS')
              .attr('font-size', 14)
              .style('fill', '#739AC5')
-             .text('So far USA reported highest cases and deaths and is hotspot country');
+             .text('So far USA reported highest cases and deaths and is hotspot country <br/>. Also Brazil, India, Russia are next in line as they conducted more tests so far');
          
            // Add circle dots on svg chart
            svg_scatter
