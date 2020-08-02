@@ -1,1 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>COVID-19 - GLOBAL IMPACT SUMMARY</title>
+      <meta charset="utf-8" />
+      <script src="https://d3js.org/d3.v4.min.js"></script>
+      <meta
+         name="viewport"
+         content="width=device-width, initial-scale=1.0"
+         />
+      <style>
+         body {
+         margin: 0;
+         font: 11px Trebuchet MS;
+         background-color: #grey;
+         background-image: url('data/covid-19.png');
+         background-repeat: no-repeat;
+         background-attachment: fixed;
+         background-size: 100% 100%;
+         }
+         .header h1 {
+         height: 10px;
+         top: 18px;
+         left: 10px;
+         }
+         /* Style the header */
+         .header h1 {
+         text-align: center;
+         height: 10px;
+         top: 18px;
+         left: 10px;
+         color: white;
+         padding-bottom: 5px;
+         }
+         /* Style the top navigation bar */
+         .topnav {
+         overflow: hidden;
+         background-color: #803432;
+         }
+         /* Style the topnav links */
+         .topnav a {
+         float: left;
+         display: block;
+         color: antiquewhite;
+         text-align: center;
+         padding: 5px 12px;
+         text-decoration: none;
+         text-align: center;
+         font-size: medium;
+         }
+         /* Change color on hover */
+         .topnav a:hover {
+         background-color: lightblue;
+         color: darkred;
+         text-align: center;
+         }
+         .tooltip {
+         position: absolute;
+         display: inline;
+         overflow: auto;
+         font-size: 14px;
+         width: auto;
+         height: auto;
+         pointer-events: none;
+         background-color: antiquewhite;
+         color: midnightblue;
+         padding: 0.3px;
+         }
+         /* Style the footer */
+         .footer {
+         background-color: lightblue;
+         padding: 10px;
+         text-align: center;
+         }
+         .container {
+         position: center;
+         margin: 1px;
+         width: 100%;
+         }
+         .bar1 {
+         fill: #008B8B;
+         }
+         .bar2 {
+         fill: #FB7E81;
+         }
+         .bar3 {
+         fill: #9E0508;
+         }
+         .bar:hover {
+         fill: orange;
+         }
+         /* bar toolTip */
+         .barToolTip {
+         position      : absolute;
+         text-align    : center;
+         max-width     : 70px;
+         max-height    : 30px;
+         padding       : 8px;
+         border        : none;
+         border-radius : 8px;
+         margin-top    : -30px;
+         font          : 10px sans-serif;
+         background    : black;
+         color         : white;
+         pointer-events: none;
+         }
+      </style>
+   </head>
+   <body>
+      <div class="header">
+         <h1
+            style="
+            text-align: center;
+            color: antiquewhite;
+            font-family: Trebuchet MS;
+            font-size: 250%;
+            "
+            >
+            COVID-19 GLOBAL IMPACT SUMMARY
+         </h1>
+      </div>
+      <div class="body">
+         <div class="container">
+            <div class="topnav" >
+               <a href="index.html"><b>COVID-19 TESTS SUMMARY</b></a>
+               <a href="casesvsdeaths.html"><b>CASES AND DEATHS</b></a>
+               <a href="sexdisagginfo.html"><b>SEX DISAGGREGATED INFO</b></a>
+            </div>
+         </div>
+         <p
+            style="
+            font-family: Trebuchet MS;
+            font-size: 130%;
+            "
+            align="justify"
+            >
+            <b style="color: #803432; font-size: 18px;"
+               >  COVID-19 Overview</b
+               ><br />
+         <p style="color:antiquewhite; font-size: 16px"> Coronavirus disease 2019 (COVID-19) is an infectious disease caused by severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2). It was first identified in December 2019 in Wuhan, Hubei, China, and has resulted in an ongoing pandemic. The first confirmed case has been traced back to 17 November 2019 in Hubei. As of 1 August 2020, more than 17.5 million cases have been reported across 188 countries and territories, resulting in more than 679,000 deaths. More than 10.3 million people have recovered. <a href="https://en.wikipedia.org/wiki/Coronavirus_disease_2019">[R]</a>    
+         </p>
+         <p
+            style="
+            font-family: Trebuchet MS;
+            font-size: 130%;
+            "
+            align="justify"
+            >
+            <b style="color: #803432; font-size: 16px;"
+               >Why COVID-19 testing is so important?</b
+               ><br />
+         <p style="color:antiquewhite; font-size: 16px"> The COVID-19 testing is important to prevent the spread of the virus in the community. Less than three percent of the world population has been tested to date. The testing has mainly been on demand testing (PCR). Two kinds of tests are used to determine COVID-19 infection.<br/>
+             1. The PCR test (polymerase chain reaction test), can be done with a throat swab and determines if you have the infection now. This test is used for those concerned if they have the virus because of symptoms. <br/>
+             2. The Antibody test has growing interest as it can determine if you have been infected with the virus and fought off the disease. Both tests have many false positives, and recent exposure, particularly with the antibody test, may not trigger a positive for one to three weeks. <br/>
+            The antibody test is a better test to determine the infectivity rate in the community. Most people seeking a test do so because they have symptoms (PCR) but is not helpful in determining how many in the community have been exposed. <a href="https://www.tampabay.com/opinion/2020/05/11/why-covid-19-testing-is-important-column/">[R]</a> <br/>
+         </p>
+         <p
+            style="
+            font-family: Trebuchet MS;
+            font-size: 130%;
+            "
+            align="justify"
+            >
+            <b style="color: #803432; font-size: 18px;"
+               >  COVID-19 TESTS TREND</b
+               ><br />
+         <p style="color:antiquewhite; font-size: 16px"> The below bar chart shows the testing trend of the countries which are conducting the tests to the people to identy and take appropriate measures to prevent the spread of the virus. </p>
 
+         </p>
+         </p>
+         <div
+            id="narrative_viz"
+            style="
+            background-color: #CACBD4;
+            color: rgba(236, 241, 175, 0.09);
+            padding: 10px;
+            border: 3px outset  #803432;
+            "
+            ></div>
+         <br />
+         <footer>
+            <p
+               style="
+               background-color: #803432;
+               color: antiquewhite;
+               font-family: Trebuchet MS;
+               font-size: 160%;
+               "
+               align="justify"
+               >
+               <b>References</b>
+            </p>
+            <p style="color:antiquewhite; font-size: 14px"> 
+               <b>Dataset References : </b>
+               <a href= "https://ourworldindata.org/coronavirus-source-data"> https://ourworldindata.org/coronavirus-source-data </a>  ,                 
+               <a href="https://globalhealth5050.org/covid19/sex-disaggregated-data-tracker/#1593530684002-e87481be-8709"> 
+               https://globalhealth5050.org/covid19/sex-disaggregated-data-tracker</a>
+               <br />
+               <b>Background Image   : </b>
+               <a href="https://www.labmanager.com/multimedia/covid-19-resource-guide-22131">
+               www.labmanager.com/multimedia/covid-19-resource-guide-22131</a>          
+               <br />
+               <b>Author             : </b> Suresh Reddy Ponnam Reddy<br />
+               <br />
+               For more info on COVID-19, please visit <a href="https://www.cdc.gov/coronavirus/2019-ncov/index.html">www.cdc.gov/coronavirus</a>. Please follow the CDC guidelines and stay safe!
+            </p>
+         </footer>
+      </div>
+      <script type="text/javascript">
+         
+         ////////////////////////start -  total tests bar chart //////////////////////
+         
+         // Set width, height and margin for this chart
+         var margin1 = { top: 10, right: 50, bottom: 100, left: 90 },
+           width1 = 1500 - margin1.left - margin1.right,
+           height1 = 550 - margin1.top - margin1.bottom;
+         
+         // append the svg object to the body of the page
+         var svg2 = d3
+           .select('#narrative_viz')
+           .append('svg')
+           .attr('width', width1 + margin1.left + margin1.right)
+           .attr('height', height1 + margin1.top + margin1.bottom)
+           .append('g')
+           .attr(
+             'transform',
+             'translate(' + margin1.left + ',' + margin1.top + ')'
+           );
+         
+         // Initialize the X axis
+         var x_b = d3.scaleBand().range([0, width1]).padding(0.2);
+         var xAxis_b = svg2
+           .append('g')
+           .attr('transform', 'translate(0,' + height1 + ')');
+         
+         // Initialize the Y axis
+         var y_b = d3.scaleLinear().range([height1, 0]);
+         var yAxis_b = svg2.append('g').attr('class', 'myYaxis');
+         
+         var barTooltip = d3.select("body").append("div").attr("class", "barToolTip");
+         
+         
+         // Load Total test cases data
+         d3.csv('data/covid_total_tests_per_country_07252020.csv', function (
+           data
+         ) {
+           var color = d3.scaleOrdinal(d3.schemeCategory10);
+           //var colorScale = d3.category20c();
+           // X axis
+           x_b.domain(
+             data.map(function (d) {
+               return d.location;
+             })
+           );
+           xAxis_b
+             .transition()
+             .duration(6000)
+             .call(d3.axisBottom(x_b))
+             .selectAll('text')
+             .attr('transform', 'translate(-10,0)rotate(-45)')
+             .style('text-anchor', 'end');
+         
+           // text label for the x axis
+           svg2
+             .append('text')
+             .attr(
+               'transform',
+               'translate(' +
+                 width1 / 2.0 +
+                 ' ,' +
+                 (height1 + margin1.top + 70 ) +
+                 ')'
+             )
+             .style('text-anchor', 'middle')        
+             .style('font-famliy', 'Trebuchet MS')
+             .style('font', '16px times')
+             .text('Country Name');
+           
+           // Add Y axis
+           y_b.domain([
+             0,
+             d3.max(data, function (d) {
+               return +d.total_tests;
+             }),
+           ]);
+           yAxis_b.transition().duration(1000).call(d3.axisLeft(y_b));
+         
+           svg2
+             .append('text')
+             .attr('transform', 'rotate(-90)')
+             .attr('y', 0 - margin1.left)
+             .attr('x', 0 - height1 / 2)
+             .attr('dy', '1em')
+             .style('text-anchor', 'middle')        
+             .style('font-famliy', 'Trebuchet MS')
+             .style('font', '16px times')
+             .text('Total Tests');
+         
+           // variable u: map data to existing bars
+           var u2 = svg2.selectAll('rect').data(data);
+         
+           // update bars to reflect the three regions based on total number of tests
+           u2.enter()
+             .append('rect')
+             .merge(u2)
+             .transition()
+             .duration(1000)
+             .attr('x', function (d) {
+               return x_b(d.location);
+             })
+             .attr('y', function (d) {
+               return y_b(d.total_tests);
+             })
+             .attr('width', x_b.bandwidth())
+             .attr('height', function (d) {
+               return height1 - y_b(d.total_tests);
+             })
+             // add color range per total no. of tests
+             .attr('class', function (d) {
+               var s = 'bar ';
+               if (d.total_tests > 1000000) {
+                 return s + 'bar1';
+               } else if (d.total_tests > 500000 && d.total_tests < 1000000) {
+                 return s + 'bar2';
+               } else {
+                 return s + 'bar3';
+               }
+             
+             });
+         
+           // function call backs for mouseover and mouseout
+            
+            function onMouseOver(d){
+
+               var tooltipDiv = d3.select("barToolTip"); 
+                        tooltipDiv.transition()        
+                         .duration(200)      
+                         .style("opacity", 1);    
+
+                        tooltipDiv.html( "your Content")
+                         .style("left", (parseFloat(widthScale(d.total_tests))) + "px") 
+                         .style("cursor", "pointer")
+                         .style("top", function(d){
+                     return d3.event.pageY - this.offsetHeight - 17  + "px"
+                  })
+               .style("color", "#333333");        
+            }
+
+            function onMouseOut(d){
+                var tooltipDiv = d3.select("barToolTip"); 
+                        tooltipDiv.transition()        
+                                  .duration(500)      
+                                  .style("opacity", 0);  
+            }
+            
+            
+           // add legend
+         
+           svg2
+             .append('circle')
+             .attr('cx', 1000)
+             .attr('cy', 60)
+             .attr('r', 6)
+             .style('fill', '#008B8B');
+           svg2
+             .append('circle')
+             .attr('cx', 1000)
+             .attr('cy', 90)
+             .attr('r', 6)
+             .style('fill', '#FB7E81');
+           svg2
+             .append('circle')
+             .attr('cx', 1000)
+             .attr('cy', 120)
+             .attr('r', 6)
+             .style('fill', '#9E0508');
+           svg2
+             .append('text')
+             .attr('x', 1020)
+             .attr('y', 60)
+             .text('Total Tests > 1M')
+             .style('font-size', '15px')
+             .attr('alignment-baseline', 'middle');
+           svg2
+             .append('text')
+             .attr('x', 1020)
+             .attr('y', 90)
+             .text('Total Tests > 500K & < 1M')
+             .style('font-size', '15px')
+             .attr('alignment-baseline', 'middle');
+           svg2
+             .append('text')
+             .attr('x', 1020)
+             .attr('y', 120)
+             .text('Total Tests < 500K')
+             .style('font-size', '15px')
+             .attr('alignment-baseline', 'middle');
+         });
+         
+         ////////////////////////////// End - Total Cases - bar chart ///////////////////////////////////////////////
+      </script>
+   </body>
+</html>
