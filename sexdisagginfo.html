@@ -16,7 +16,8 @@
          background-image: url('data/covid-19.png');
          background-repeat: no-repeat;
          background-attachment: fixed;
-         background-size: 100% 100%;
+         background-size: 100% 100%
+		 ;
          }
          .header h1 {
          height: 10px;
@@ -235,15 +236,17 @@
       <script type="text/javascript">
          
          ////////////////////////start -  total tests bar chart //////////////////////
+	      
+	d3.csv('data/covid_total_tests_per_country_07252020.csv', function (
+           data_fatalrate
+         );
          
-       var maleData = [];
-var femaleData = [];
+       	var maleData = [];
+	var femaleData = [];
 
-for(var i = 0; i < bothData.length; i++){
-	if(bothData[i]["viewer_gender"] === "MALE"){
-		maleData.push(bothData[i]);
-	}else{
-		femaleData.push(bothData[i]);
+	for(var i = 0; i < data_fatalrate.length; i++){
+		maleData.push(data_fatalrate[i]["deaths_male_percent"]);
+		femaleData.push(data_fatalrate[i]["deaths_feamle_percent"]);
 	}
 }
 
@@ -261,9 +264,9 @@ function change(value){
 
 function update(data){
 	//set domain for the x axis
-	xChart.domain(data.map(function(d){ return d.viewer_age; }) );
+	xChart.domain(data.map(function(d){ return d.Country; }) );
 	//set domain for y axis
-	yChart.domain( [0, d3.max(data, function(d){ return +d.watch_time_minutes; })] );
+	yChart.domain( [0, d3.max(data, function(d){ return +d.deaths_male_percent; })] );
 	
 	//get the width of each bar 
 	var barWidth = width / data.length;
@@ -279,11 +282,11 @@ function update(data){
 		.append("rect")
 		.attr("class", "bar")
 		.attr("x", function(d, i){ return i * barWidth + 1 })
-		.attr("y", function(d){ return yChart( d.watch_time_minutes); })
-		.attr("height", function(d){ return height - yChart(d.watch_time_minutes); })
+		.attr("y", function(d){ return yChart( d.deaths_male_percent); })
+		.attr("height", function(d){ return height - yChart(d.deaths_male_percent); })
 		.attr("width", barWidth - 1)
 		.attr("fill", function(d){ 
-			if(d.viewer_gender === "FEMALE"){
+			if(d.deaths_male_percent){
 				return "rgb(251,180,174)";
 			}else{
 				return "rgb(179,205,227)";
@@ -349,12 +352,12 @@ var yAxis = d3.axisLeft(yChart);
 chart
 	.append("text")
 	.attr("transform", "translate(-35," +  (height+margin.bottom)/2 + ") rotate(-90)")
-	.text("% of total watch time");
+	.text("% of deaths");
 		
 chart
 	.append("text")
 	.attr("transform", "translate(" + (width/2) + "," + (height + margin.bottom - 5) + ")")
-	.text("age group");
+	.text("country Name");
 
 //use bothData to begin with
 update(bothData);
