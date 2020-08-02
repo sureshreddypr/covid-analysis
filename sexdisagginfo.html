@@ -228,14 +228,14 @@
     function update(selectedVar) {
 	   gender = selectedVar; 
 	    
-	    fill_color = if (gender==="Male") {return "#008B8B"}else {return "#9E0508"} ;
+	    fill_color = function(gender) { return if (gender==="Male") {return "#008B8B"}else {return "#9E0508"} };
 	    
         // Parse the Data
         d3.csv("data/sex-disaggregated_covid_data_07252020.csv", function(data) {
 	
 		// X axis
             x1.domain(data.map(function(d) { return d.Country; }))
-            xAxis1.transition().duration(1000).call(d3.axisBottom(x1)).selectAll("text")
+            xAxis1.transition().duration(4000).call(d3.axisBottom(x1)).selectAll("text")
                 .attr("transform", "translate(-10,0)rotate(-45)")
                 .style("text-anchor", "end");
 
@@ -249,7 +249,7 @@
 
             // Add Y axis
             y1.domain([0, d3.max(data, function(d) { return +d[selectedVar]; }) ]);
-            yAxis1.transition().duration(1000).call(d3.axisLeft(y1));
+            yAxis1.transition().duration(4000).call(d3.axisLeft(y1));
 
             svg1.append("text")
                 .attr("transform", "rotate(-90)")
@@ -270,7 +270,7 @@
                 .append("rect")
                 .merge(u)
                 .transition()
-                .duration(1000)
+                .duration(4000)
                 .attr("x", function(d) { return x1(d.Country); })
                 .attr("y", function(d) { return y1(d[selectedVar]); })
                 .attr("width", x1.bandwidth())
