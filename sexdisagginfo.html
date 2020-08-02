@@ -227,11 +227,11 @@
     // A function that create / update the plot for a given variable:
     function update(selectedVar) {
 	    console.log(selectedVar);
-	    function(k) {
+	   /* function(k) {
 		    if (selectedVar==="Male") {return "#008B8B"}else {return "#9E0508"} 
 	    }
 	    fill_color = function(selectedVar);
-	    console.log(fill_color);
+	    console.log(fill_color);*/
 	    
         // Parse the Data
         d3.csv("data/sex-disaggregated_covid_data_07252020.csv", function(data) {
@@ -278,7 +278,13 @@
                 .attr("y", function(d) { return y1(d[selectedVar]); })
                 .attr("width", x1.bandwidth())
                 .attr("height", function(d) { return height - y1(d[selectedVar]); })
-                .attr("fill", fill_color);
+                .attr("fill", function(selectedVar) { 
+		    if (selectedVar==="Male") {
+			    return "#008B8B";
+		    }else {
+			    return "#9E0508";
+		    } 
+	    	  
         })
      }
     update('Male')
