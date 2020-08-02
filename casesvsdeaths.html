@@ -2,8 +2,9 @@
 <html lang="en">
    <head>
       <title>COVID-19 - GLOBAL IMPACT SUMMARY</title>
-     	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta charset="utf-8" />
       <script src="https://d3js.org/d3.v4.min.js"></script>
+    	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <style>
          body {
          margin: 0;
@@ -11,7 +12,6 @@
          background-image: url('data/covid-19.png');
          background-repeat: no-repeat;
          background-attachment: fixed;
-         background-size: 100% 100%;
          }
          .header h1 {
          height: 10px;
@@ -53,12 +53,12 @@
          position: absolute;
          display: inline;
          overflow: auto;
-         font-size: 12px;
+         font-size: 14px;
          width: auto;
          height: auto;
          pointer-events: none;
-         background-color: #EBCCAD;
-         color: darkblue;
+         background-color: antiquewhite;
+         color: midnightblue;
          padding: 0.3px;
          }
          /* Style the footer */
@@ -71,8 +71,6 @@
          position: center;
          margin: 1px;
          width: 100%;
-         min-width:720px;
-         max-width:1920px;
          }
          .bar1 {
          fill: #008B8B;
@@ -100,8 +98,6 @@
       </style>
    </head>
    <body>
-     <div class="container">
-
       <div class="header">
          <h1
             style="
@@ -115,11 +111,13 @@
          </h1>
       </div>
       <div class="body">
+         <div class="container">
             <div class="topnav" >
                <a href="index.html"><b>COVID-19 TESTS SUMMARY</b></a>
                <a href="casesvsdeaths.html"><b>CASES AND DEATHS</b></a>
                <a href="sexdisagginfo.html"><b>SEX DISAGGREGATED INFO</b></a>
             </div>
+         </div>
          <p
             style="
             font-family: Trebuchet MS;
@@ -135,7 +133,7 @@
          countries that are highly impacted reporting highest number of total
          cases and deaths in the world so far.</p><br />
          </p>
-         <div class="container"
+         <div
             id="narrative_viz"
             style="
             background-color: #CACBD4;
@@ -173,13 +171,12 @@
             </p>
          </footer>
       </div>
-   </div>
       <script type="text/javascript">
          ////////////////////////////////////// Beginning of scatter plot code ////////////////////////////////////
          
          // set the dimensions and margins of the graph
-         var margin_scatter = {top: 10, right: 50, bottom: 40, left: 70},
-           width_scatter = 12 - margin_scatter.left - margin_scatter.right,
+         var margin_scatter = {top: 10, right: 40, bottom: 40, left: 70},
+           width_scatter = 1200 - margin_scatter.left - margin_scatter.right,
            height_scatter = 500 - margin_scatter.top - margin_scatter.bottom;
          
          // append the svg object to the body of the page
@@ -275,14 +272,14 @@
            var tipMouseover = function (d) {
              //var color = color(d.jurisdiction);
              var html =
-              '<span>' +
-              d.location +
-              '</span><br/>' +
-              "<b style='color: red'>" +
-              d.total_deaths +
-              "</b> Deaths, <b style='color: darkred'>" +
-              d.total_cases +
-              '</b> Total Cases';
+               '<span>' +
+               d.location +
+               '</span><br/>' +
+               "<b style='color: red'>" +
+               d.total_deaths + 
+               "</b> Total Deaths :, <b style='color: darkred'>" +
+               d.total_cases +
+               '</b> Total Cases';
          
              tooltip
                .html(html)
