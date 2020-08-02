@@ -227,7 +227,7 @@
     // A function that create / update the plot for a given variable:
     function update(selectedVar) {
 	    
-	    fill_color = function(selectedVar) {if (selectedVar=="Male") {return "#008B8B"}else {return "#9E0508"} };
+	    fill_color = function(selectedVar) {if (selectedVar=="Female") {return "#008B8B"}else {return "#9E0508"} };
 	    
         // Parse the Data
         d3.csv("data/sex-disaggregated_covid_data_07252020.csv", function(data) {
