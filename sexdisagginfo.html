@@ -244,7 +244,7 @@
     var yAxis1 = svg1.append("g")
         .attr("class", "myYaxis")
 
-    fill_color = '';
+    gender = selectedVar;
     // A function that create / update the plot for a given variable:
     function update(selectedVar) {
 	    
@@ -252,11 +252,8 @@
         d3.csv("data/sex-disaggregated_covid_data_07252020.csv", function(data) {
 		
 	if (selectedVar=='Male'){
-		gender = selectedVar;
-		fill_color  = 
 		selectedVar = data.death_male_percent;
 	}else {
-		fill_color  = #9E0508;
 		selectedVar = data.death_femmale_percent;
 	}
 		
