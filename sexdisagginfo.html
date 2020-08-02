@@ -249,13 +249,7 @@
 	    
         // Parse the Data
         d3.csv("data/sex-disaggregated_covid_data_07252020.csv", function(data) {
-		
-	if (selectedVar=='Male'){
-		selectedVar = data.death_male_percent;
-	}else {
-		selectedVar = data.death_femmale_percent;
-	}
-		
+	
 		// X axis
             x1.domain(data.map(function(d) { return d.Country; }))
             xAxis1.transition().duration(1000).call(d3.axisBottom(x1)).selectAll("text")
