@@ -366,8 +366,14 @@
                 .attr("width", x1.bandwidth())
                 .attr("height", function(d) { return height - y1(d[selectedVar]); })
                 .attr("fill", "#FB7E81")
-		.on('mouseover', tipMouseover)
-             	.on('mouseout', tipMouseout);
+		.on('mouseover', function() {
+        tooltip.style("visibility", "visible")
+        tooltip.style("opacity", 1)
+        d3.select(this).style("fill", "red");})
+             	.on('mouseout', function() {
+          tooltip.style("visibility", "hidden")
+          tooltip.style("opacity", 0)
+          d3.select(this).style("fill", fill); });
          
         })
      }
