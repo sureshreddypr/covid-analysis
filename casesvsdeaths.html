@@ -336,9 +336,17 @@
              .attr('font-family', 'Trebuchet MS')
              .attr('font-size', 14)
              .style('fill', '#739AC5')
-             .text('So far USA reported highest cases and deaths and is hotspot country.') 
-             .text('Also Brazil, India, Russia are next in line as they conducted more tests so far');
-         
+             .text('So far USA reported highest cases and deaths even after the country was reopened.');
+         svg_scatter
+            .append('text')
+             .attr('x', 660)
+             .attr('y', 175)
+             .attr('font-family', 'Trebuchet MS')
+             .attr('font-size', 14)
+             .style('fill', '#739AC5')
+             .text('Also Brazil, India, Russia are next in line as they conducted more tests so far.');
+            
+            
            // Add circle dots on svg chart
            svg_scatter
              .append('g')
