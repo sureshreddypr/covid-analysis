@@ -53,12 +53,12 @@
          position: absolute;
          display: inline;
          overflow: auto;
-         font-size: 14px;
+         font-size: 12px;
          width: auto;
          height: auto;
          pointer-events: none;
-         background-color: antiquewhite;
-         color: midnightblue;
+         background-color: #EBCCAD;
+         color: darkblue;
          padding: 0.3px;
          }
          /* Style the footer */
@@ -178,8 +178,8 @@
          ////////////////////////////////////// Beginning of scatter plot code ////////////////////////////////////
          
          // set the dimensions and margins of the graph
-         var margin_scatter = {top: 10, right: 40, bottom: 40, left: 70},
-           width_scatter = 1200 - margin_scatter.left - margin_scatter.right,
+         var margin_scatter = {top: 10, right: 50, bottom: 40, left: 70},
+           width_scatter = 12 - margin_scatter.left - margin_scatter.right,
            height_scatter = 500 - margin_scatter.top - margin_scatter.bottom;
          
          // append the svg object to the body of the page
@@ -276,11 +276,11 @@
              //var color = color(d.jurisdiction);
              var html =
                '<span>' +
-               d.location +
+               'Country' : d.location +
                '</span><br/>' +
-               "<b style='color: red'>" +
+               "<b style='color: darkred'>" +
                d.total_deaths + 
-               "</b> Total Deaths :, <b style='color: darkred'>" +
+               "</b> Total Deaths , <b style='color: darkred'>" +
                d.total_cases +
                '</b> Total Cases';
          
