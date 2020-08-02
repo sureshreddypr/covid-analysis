@@ -106,13 +106,6 @@
          pointer-events: none;
          }
          
-         .radio{
-	         text-align: center;
-         }
-         .row{
-	         text-align: center;
-         }
-         
       </style>
    </head>
    <body>
@@ -177,24 +170,11 @@
 
          </p>
          </p>
-         <br/>
-   <div class='row'>
-	<h2> User Interactive</h2>
-				<p>total time watched: 1411 minutes</p>
-					<div class='radio'>
-						<label class='radio-inline'>
-							<input type="radio" name="gender" value="male" onclick='change(this.value)'> male
-						</label>
-						<label class='radio-inline'>
-							<input type="radio" name="gender" value="female" onclick='change(this.value)'> female
-						</label>
-						<label class='radio-inline'>
-							<input type="radio" name="gender" value="both" onclick='change(this.value)' checked > both
-						</label>
-					</div>
-			<svg class='chart'>
-			</svg>
-	</div>
+         <br/>        
+	 <div>
+	    <button type="button" onclick="update('Male')">Male</button>
+            <button type="button" onclick="update('Female')">Female</button></div>
+    	 </div>
          <div
             id="narrative_viz3"
             style="
