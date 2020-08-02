@@ -273,7 +273,7 @@
                 .transition()
                 .duration(4000)
                 .attr("x", function(d) { return x1(d.Country); })
-                .attr("y", function(d) { return y1((d[selectedVar]); })
+                .attr("y", function(d) { return y1(d[selectedVar]); })
                 .attr("width", x1.bandwidth())
                 .attr("height", function(d) { return height - y1(d[selectedVar]); })
                 .attr("fill", "#803432");
