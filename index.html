@@ -294,6 +294,42 @@
              .style('font-famliy', 'Trebuchet MS')
              .style('font', '16px times')
              .text('Total Tests');
+		 
+		 
+	 // Tooltip setting for mouseover event
+           var tooltip = d3
+             .select('#narrative_viz')
+             .append('div')
+             .attr('class', 'tooltip')
+             .style('opacity', 0);
+
+          // tooltip mouseover event handler
+           var tipMouseover = function (d) {
+             //var color = color(d.jurisdiction);
+             var html =
+               '<span> <b>' +
+               d.Country +
+               '</b></span><br/> Total Tests : ' +
+               "<b style='color: #008B8B'>" +
+               d[selectedVar]  + '</b>';
+	
+             tooltip
+               .html(html)
+               .style('left', d3.event.pageX + 15 + 'px')
+               .style('top', d3.event.pageY - 28 + 'px')
+               .transition()
+               .duration(200) // ms
+               .style('opacity', 0.9); // started as 0!
+           };
+
+          // tooltip mouseout event handler
+           var tipMouseout = function (d) {
+             tooltip
+               .transition()
+               .duration(300) // ms
+               .style('opacity', 0); // don't care about position!
+           };
+		
          		
            //arrow for annotation
            svg2
@@ -358,6 +394,8 @@
            u2.enter()
              .append('rect')
              .merge(u2)
+	     .on('mouseover', tipMouseover)
+    	     .on('mouseout', tipMouseout)   
              .transition()
              .duration(1000)
              .attr('x', function (d) {
