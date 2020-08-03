@@ -359,22 +359,16 @@
                 .enter()
                 .append("rect")
                 .merge(u)
-                .transition()
+    		.on('mouseover', tipMouseover)
+    		.on('mouseout', tipMouseout)                
+		.transition()
                 .duration(4000)
                 .attr("x", function(d) { return x1(d.Country); })
                 .attr("y", function(d) { return y1(d[selectedVar]); })
                 .attr("width", x1.bandwidth())
                 .attr("height", function(d) { return height - y1(d[selectedVar]); })
                 .attr("fill", "#FB7E81")
-		.on('mousemove', function(d){
-            tooltip
-              .style("left", d3.event.pageX - 50 + "px")
-              .style("top", d3.event.pageY - 70 + "px")
-              .style("display", "inline-block")
-              .html((d.Country) + "<br>" + (formart(d.selectedVar)));
-        })
-    		.on("mouseout", function(d){ tooltip.style("display", "none");});
-        })
+		
      }
     update('Male')
 	      
