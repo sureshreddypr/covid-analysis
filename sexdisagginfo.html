@@ -278,7 +278,7 @@
                '</b></span><br/> Death % : ' +
                "<b style='color: darkred'>" +
                d[selectedVar]  + '</b>';
-		
+	
              tooltip
                .html(html)
                .style('left', d3.event.pageX + 15 + 'px')
@@ -366,9 +366,14 @@
                 .attr("width", x1.bandwidth())
                 .attr("height", function(d) { return height - y1(d[selectedVar]); })
                 .attr("fill", "#FB7E81")
-		.on('mouseover' tipMouseover)
-		.on('mouseout', tipMouseout);
-         
+		.on('mousemove', function(d){
+            tooltip
+              .style("left", d3.event.pageX - 50 + "px")
+              .style("top", d3.event.pageY - 70 + "px")
+              .style("display", "inline-block")
+              .html((d.Country) + "<br>" + (d.selectedVar));
+        })
+    		.on("mouseout", function(d){ tooltip.style("display", "none");});
         })
      }
     update('Male')
