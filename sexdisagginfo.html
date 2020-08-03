@@ -87,22 +87,7 @@
          .bar:hover {
          fill: orange;
          }
-         /* bar toolTip */
-         .barToolTip {
-         position      : absolute;
-         text-align    : center;
-         max-width     : 70px;
-         max-height    : 30px;
-         padding       : 8px;
-         border        : none;
-         border-radius : 8px;
-         margin-top    : -30px;
-         font          : 10px sans-serif;
-         background    : black;
-         color         : white;
-         pointer-events: none;
-         }
-         
+        
       </style>
    </head>
    <body>
@@ -370,78 +355,8 @@
 		
      }
     update('Male')
-	      
-     /*   
-           // function call backs for mouseover and mouseout
-            
-            function onMouseOver(d){
-
-               var tooltipDiv = d3.select("barToolTip"); 
-                        tooltipDiv.transition()        
-                         .duration(200)      
-                         .style("opacity", 1);    
-
-                        tooltipDiv.html( "your Content")
-                         .style("left", (parseFloat(widthScale(d.total_tests))) + "px") 
-                         .style("cursor", "pointer")
-                         .style("top", function(d){
-                     return d3.event.pageY - this.offsetHeight - 17  + "px"
-                  })
-               .style("color", "#333333");        
-            }
-
-            function onMouseOut(d){
-                var tooltipDiv = d3.select("barToolTip"); 
-                        tooltipDiv.transition()        
-                                  .duration(500)      
-                                  .style("opacity", 0);  
-            }
-            
-            
-           // add legend
          
-           svg2
-             .append('circle')
-             .attr('cx', 1000)
-             .attr('cy', 60)
-             .attr('r', 6)
-             .style('fill', '#008B8B');
-           svg2
-             .append('circle')
-             .attr('cx', 1000)
-             .attr('cy', 90)
-             .attr('r', 6)
-             .style('fill', '#FB7E81');
-           svg2
-             .append('circle')
-             .attr('cx', 1000)
-             .attr('cy', 120)
-             .attr('r', 6)
-             .style('fill', '#9E0508');
-           svg2
-             .append('text')
-             .attr('x', 1020)
-             .attr('y', 60)
-             .text('Total Tests > 1M')
-             .style('font-size', '15px')
-             .attr('alignment-baseline', 'middle');
-           svg2
-             .append('text')
-             .attr('x', 1020)
-             .attr('y', 90)
-             .text('Total Tests > 500K & < 1M')
-             .style('font-size', '15px')
-             .attr('alignment-baseline', 'middle');
-           svg2
-             .append('text')
-             .attr('x', 1020)
-             .attr('y', 120)
-             .text('Total Tests < 500K')
-             .style('font-size', '15px')
-             .attr('alignment-baseline', 'middle');
-         });
-         
-         ////////////////////////////// End - Total Cases - bar chart ///////////////////////////////////////////////  */
+         ////////////////////////////// End - Total Cases - bar chart ///////////////////////////////////////////////  
       </script>
    </body>
 </html>
